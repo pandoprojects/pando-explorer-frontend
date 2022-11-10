@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.599" height="24.459" viewBox="0 0 32.599 24.459">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#7d6aff"/>
+      <stop offset="0.53" stop-color="#7c7f84"/>
+      <stop offset="0.897" stop-color="#ff55c2"/>
+    </linearGradient>
+  </defs>
+  <path id="Zytatron" d="M29.222,26.238h4.046V16.521l-4.559-4.559-2.862,2.862L29.221,18.2v8.039Zm4.057,2.028H19.163L15.79,24.892l1.43-1.43,2.787,2.787h5.734l-5.648-5.659,1.442-1.442L27.182,24.8V19.063l-2.777-2.777,1.42-1.42L18.811,7.819H4.717l4.036,4.036v.01h8.372l2.957,2.957-4.324,4.324L12.8,16.189v-2.3H8.755v3.971l7,7-2.85,2.85,4.559,4.559H37.316L33.28,28.263Z" transform="translate(-4.717 -7.819)" fill="url(#linear-gradient)"/>
+</svg>

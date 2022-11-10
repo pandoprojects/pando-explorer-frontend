@@ -1,0 +1,135 @@
+table.data {
+  width: 100%;
+    // background: #236c77;
+    margin: 0 auto;
+    // background: #236c77;
+    border-radius: 5px;
+    // height: 87%;
+
+  .clickable-row {
+    tr td {
+      cursor: pointer;
+    }
+  }
+
+  thead th,
+  tbody td{
+    padding: 10px;
+  }
+  tbody th {
+    text-align: left;
+    padding: 0.75rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  thead {
+    th {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: $weight-semi;
+      color: $color-font-light;
+    }
+  }
+  tbody {
+    tr {
+      background-color: $color-table-row;
+      border-bottom: 1px solid #ffffff29;
+
+      &:nth-child(2n) {
+        background-color: $color-table-row-alt;
+      }
+      &:hover td {
+        background-color: lighten($color-table-row, 5%);
+      }
+    }
+    td,
+    th {
+      color: $color-font-main;
+    }
+  }
+
+  tbody td.hash {
+    white-space: nowrap;
+  }
+
+  tbody td.overflow {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+  th.left,
+  td.left {
+    text-align: left;
+  }
+  th.center,
+  td.center {
+    text-align: center;
+  }
+  th.right,
+  td.right {
+    text-align: right;
+  }
+}
+
+$th-width: 150px;
+$th-width-wide: 230px;
+table.details {
+  width: 100%;
+  margin-bottom: 48px;
+  // background-color: $color-panel;
+  thead tr {
+    th:first-child {
+      width: 19rem;
+      border-bottom: none;
+      padding-left: 1rem;
+      vertical-align: top;
+    }
+    th {
+      font-family: $font-body;
+      color: $color-font-light;
+      text-align: left;
+      border-bottom: 1px solid $color-line;
+      padding: 1rem 1rem 1rem 0;
+      font-size: 1.125rem;
+      font-weight: $weight-semi;
+    }
+  }
+  tbody.cp tr th {
+    width: $th-width-wide;
+  }
+  tbody tr {
+    th,
+    td {
+      padding: 1rem 1rem 1rem 0;
+    }
+    th {
+      width: $th-width;
+      white-space: nowrap;
+      text-align: left;
+      text-transform: uppercase;
+      color: $color-font-light;
+      font-size: 0.875rem;
+      font-weight: $weight-medium;
+      padding-left: 1rem;
+      vertical-align: top;
+    }
+    td {
+      width: 75%;
+      text-align: left;
+      border-bottom: 1px solid $color-line;
+      font-size: 16px;
+      color: #fff;
+    }
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+  @include breakpoint("phablet", max) {
+    tbody tr th {
+      width: 150px;
+    }
+  }
+}
+.tablenew{
+  margin-top: 11px;
+}

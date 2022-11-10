@@ -1,0 +1,83 @@
+// Font weights
+$weight-extra-light: 200;
+$weight-light: 300;
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semi: 600;
+$weight-bold: 0;
+
+// Base Font
+$font-title: "Helvetica_Regular", sans-serif;
+$font-subtitle: "Helvetica_Regular", sans-serif;
+$font-body: "Helvetica_Regular", sans-serif;
+$line-height: 1.4;
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-semi;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-regular;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-semi;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-regular;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica_Regular";
+    // src: url("../Helvetica_Regular.ttf") format("otf");
+    font-weight: $weight-light;
+    font-style: normal;
+}

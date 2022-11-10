@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45.891" height="25.876" viewBox="0 0 45.891 25.876">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.502" y1="0.053" x2="0.499" y2="0.928" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#610b0b"/>
+      <stop offset="0.197" stop-color="#780e0e"/>
+      <stop offset="0.358" stop-color="#8f1111"/>
+      <stop offset="0.527" stop-color="#a61414"/>
+      <stop offset="0.704" stop-color="#bd1717"/>
+      <stop offset="0.973" stop-color="#bd1717" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#bd1717" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_4227" data-name="Group 4227" transform="translate(-942.598 -876.547)">
+    <path id="Rectangle_2050" data-name="Rectangle 2050" d="M5.514,0H40.377a5.514,5.514,0,0,1,5.514,5.514V25.876a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V5.514A5.514,5.514,0,0,1,5.514,0Z" transform="translate(942.598 876.547)" fill="url(#linear-gradient)"/>
+    <text id="PRO" transform="translate(950.598 892.807)" fill="#fff" font-size="15" font-family="Nexa-Bold, Nexa ☞" font-weight="700"><tspan x="0" y="0">PRO</tspan></text>
+  </g>
+</svg>

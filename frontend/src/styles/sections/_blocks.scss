@@ -1,0 +1,63 @@
+.content.blocks {
+
+}
+.content.block-details {
+  .button-list {
+    margin-top: 2rem;
+  }
+  table.transactions {
+    // table-layout: fixed;
+    max-width: 100%;
+    th.txn-type { 
+      width: 5rem;
+      vertical-align: top; 
+      white-space: nowrap;
+    }
+    td.hash {
+      width: 75%;
+      vertical-align: middle;
+      a {
+        display: block;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis; 
+      }
+    }
+  }
+  h3 {
+    margin: 3rem 0 .75rem .75rem;
+    // font-family: $font-title;
+    font-weight: $weight-bold;
+    font-size: 22px;
+    color: $color-font-main;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 25px;
+    
+  }
+  .block-txn {
+    
+    .txn-type {
+      white-space: nowrap;
+    }
+  }
+  @include breakpoint('tablet', max) {
+    .button-list {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+  @include breakpoint('phablet', max) {
+    .block-txn {
+      .txn-type{
+        &:before{ display: none }
+        font-size: 0.675rem;
+      }
+      .hash{
+        font-size: 0.675rem;
+      }
+    }
+  }
+
+}

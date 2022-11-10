@@ -1,0 +1,127 @@
+body {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background: url("/images/center-glow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+#app-root {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background: url("/images/red-glow-top-right.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+#app-container {
+  height: 100%;
+
+}
+
+#app-content {
+  // background: black;
+
+  border-radius: 20px;
+  margin-top: 180px;
+  // height: calc(100% - 60px);
+  // overflow: auto;
+  width: 100%;
+  padding-bottom: 50px;
+  // bottom: 76px;
+  // padding-bottom: 105px;
+  
+
+  .content {
+    width: 90%;
+    // max-width: 1100px;
+    margin: 93px auto 0;
+
+    @include breakpoint("tablet", max) {
+      width: 100%;
+      padding: 15px;
+    }
+
+    .page-title {
+      // font-family: $font-title;
+      font-size: 22px;
+      font-weight: $weight-bold;
+      text-align: center;
+      letter-spacing: 1px;
+      width: 100%;
+      // text-align: left;
+      // margin-top: 30px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      &.stakes {
+        margin-bottom: 27px;
+      }
+
+      &.transactions:before {
+        // @include backgroundImage("../images/icons/icon_transactions@2x.png");
+      }
+
+      &.blocks:before {
+        // @include backgroundImage("../images/icons/icon_blocks@2x.png");
+      }
+
+      &.account:before {
+        // @include backgroundImage("../images/icons/icon_account@2x.png");
+      }
+    }
+  }
+
+  @include breakpoint("phablet", max) {
+    .content .page-title {
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      text-transform: capitalize;
+      width: 100%;
+    }
+  }
+}
+
+@include breakpoint("phablet", max) {
+  html {
+    font-size: 14px;
+  }
+}
+
+.page-title blocks::before{
+  content: "";
+    display: block;
+    width: 544px;
+    height: 1px;
+    background: aqua;
+    left: 76px;
+    top: 50%;
+    position: absolute;
+}
+.page-title blocks::after{
+  content: "";
+    display: block;
+    width: 544px;
+    height: 1px;
+    background: aqua;
+    right: 76px;
+    top: 50%;
+    position: absolute;
+}

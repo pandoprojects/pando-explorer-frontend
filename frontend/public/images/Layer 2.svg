@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42.348" height="42.332" viewBox="0 0 42.348 42.332">
+  <defs>
+    <filter id="refresh" x="0" y="0" width="42.348" height="42.332" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#630069" flood-opacity="0.71"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2" transform="translate(6 3.028)">
+    <g transform="matrix(1, 0, 0, 1, -6, -3.03)" filter="url(#refresh)">
+      <path id="refresh-2" data-name="refresh" d="M26.347,17.086a1.35,1.35,0,0,0-1.687.877,9.636,9.636,0,0,1-9.272,6.64A9.582,9.582,0,0,1,5.7,15.156a9.582,9.582,0,0,1,9.69-9.447,9.8,9.8,0,0,1,6.275,2.254l-2.929-.486a1.353,1.353,0,1,0-.432,2.672l5.722.945h.229a1.35,1.35,0,0,0,.459-.081.445.445,0,0,0,.135-.081,1.053,1.053,0,0,0,.27-.148l.121-.148c0-.067.121-.121.175-.2s0-.135.067-.189A1.808,1.808,0,0,0,25.578,10L26.59,4.6a1.374,1.374,0,0,0-2.7-.513l-.364,1.957A12.43,12.43,0,0,0,15.389,3.01,12.281,12.281,0,0,0,3,15.156,12.281,12.281,0,0,0,15.389,27.3a12.308,12.308,0,0,0,11.9-8.529,1.35,1.35,0,0,0-.945-1.687Z" transform="translate(6 3.03)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

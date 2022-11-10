@@ -1,0 +1,44 @@
+table.data.block-table {
+  width: 100%; 
+  // background: #236c77;
+  // margin: 29px;
+  border-radius: 5px;
+  
+  // color: white;
+  thead tr .height:before{
+    height: 1px;
+    
+  }
+  tr .height { 
+    // width: 65px; 
+    white-space: nowrap;
+  }
+
+  // tr .hash { width: 325px; }
+  // tr .txns { width: 65px; }
+  
+  @include breakpoint('tablet-wide', max) {
+    // table-layout: fixed;
+    thead th,
+    tbody td,
+    tbody th {
+      text-align: left;
+      padding: .5rem .5rem;
+      font-size: .875rem;
+    }
+  }
+  @include breakpoint('tablet', max) {
+    tr .hash { width: 250px; }
+  }
+  @include breakpoint('tablet-small', max) {
+    tr .hash { width: 250px; }
+    tr .fee { @include hideColumn(); }
+  }
+  @include breakpoint('phablet', max) {
+    tr .hash { width: 150px; }
+  }
+  @include breakpoint('phone-wide', max) {
+    tr .age { @include hideColumn(); }
+  }
+  
+}

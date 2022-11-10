@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.673" height="20.323" viewBox="0 0 20.673 20.323">
+  <g id="Group_503" data-name="Group 503" transform="translate(0 5.226)">
+    <path id="Icon_awesome-long-arrow-alt-left" data-name="Icon awesome-long-arrow-alt-left" d="M6.186,17.185H20.119a.554.554,0,0,0,.554-.554V14.047a.554.554,0,0,0-.554-.554H6.186V11.368A1.107,1.107,0,0,0,4.3,10.585L.324,14.556a1.107,1.107,0,0,0,0,1.566L4.3,20.093a1.107,1.107,0,0,0,1.891-.783Z" transform="translate(0 -5.322)" fill="#fff"/>
+    <path id="Icon_awesome-long-arrow-alt-right" data-name="Icon awesome-long-arrow-alt-right" d="M14.487,13.493H.554A.554.554,0,0,0,0,14.047v2.584a.554.554,0,0,0,.554.554H14.487V19.31a1.107,1.107,0,0,0,1.891.783l3.971-3.971a1.107,1.107,0,0,0,0-1.566l-3.971-3.971a1.107,1.107,0,0,0-1.891.783Z" transform="translate(0 -15.484)" fill="#fff"/>
+  </g>
+</svg>

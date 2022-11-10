@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="125.36" height="34" viewBox="0 0 125.36 34">
+  <g id="OFFLINE_STATUS" data-name="OFFLINE STATUS" transform="translate(-1623 -3108)">
+    <g id="Group_969" data-name="Group 969">
+      <circle id="Ellipse_832" data-name="Ellipse 832" cx="17" cy="17" r="17" transform="translate(1623 3108)" fill="#ed4d4d"/>
+      <g id="Group_967" data-name="Group 967" transform="translate(0.39 53.103)">
+        <line id="Line_7" data-name="Line 7" x2="15" transform="translate(1632.61 3080.062)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.8"/>
+        <path id="Path_90665" data-name="Path 90665" d="M242.413,172.413a.972.972,0,0,1,1.374,0l4.581,4.581,4.581-4.581a.972.972,0,0,1,1.374,1.374l-4.581,4.581,4.581,4.581a.972.972,0,0,1-1.374,1.374l-4.581-4.581-4.581,4.581a.972.972,0,0,1-1.374-1.374l4.581-4.581-4.581-4.581A.972.972,0,0,1,242.413,172.413Z" transform="translate(1391.982 2891.769)" fill="#fff"/>
+      </g>
+    </g>
+    <path id="Path_90666" data-name="Path 90666" d="M7.56-14.28c-4.84,0-7.2,3.7-7.2,7.38S2.64.32,7.56.32,14.7-3.3,14.74-6.92C14.78-10.58,12.38-14.28,7.56-14.28Zm0,2.4c3.3,0,4.62,2.64,4.58,5C12.1-4.58,10.86-2.1,7.56-2.1S3.02-4.56,2.96-6.86C2.9-9.22,4.26-11.88,7.56-11.88ZM19.72,0V-5.18h7.02V-7.62H19.72v-3.82h7.42v-2.54H17.08V0ZM32,0V-5.18h7.02V-7.62H32v-3.82h7.42v-2.54H29.36V0Zm9.64-14V0h9.84V-2.44h-7.2V-14ZM56.38,0V-14H53.76V0ZM68.46-5.32,61.6-14H59.46V0H62.1V-9.44L69.46.02V0H71.1V-14.02H68.46ZM84.36-2.6H76.5V-5.76h7.58V-8.22H76.5v-3.22h7.86V-14H73.88V0H84.36Z" transform="translate(1664 3132.28)" fill="#ed4d4d"/>
+  </g>
+</svg>

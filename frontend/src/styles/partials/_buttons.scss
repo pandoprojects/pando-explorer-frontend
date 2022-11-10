@@ -1,0 +1,234 @@
+#{$all-button-inputs},
+.btn,
+a.btn {
+  position: relative;
+  display: inline-block;
+
+  border: none;
+
+  color: $color-font-button;
+  // font-family: $font-title;
+  font-weight: $weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.25s;
+  // background: none;
+
+  @include buttonGradient();
+
+  &:hover {
+    color:white;
+  }
+
+  &[disabled],
+  &.disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  i {
+    top: 1px;
+    margin: 0;
+    margin-left: -2%;
+  }
+
+  // COLORS
+  &.light {
+    background: $color-button-light;
+    color: $color-font-button-light;
+    border-radius: 2px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  &.icon {
+    @include column($justify: center, $align: center);
+    background: $color-button-light;
+    color: $color-font-light;
+    font-weight: $weight-semi;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    border-radius: 1.5rem;
+    padding: 0 0rem;
+
+    i {
+      display: block;
+      width: 2rem;
+      height: 2rem;
+      margin: 0;
+      top: -1px;
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    &.next {
+      i {
+        background-image: url("../../../public/images/icons/page_next_grey@2x.png");
+      }
+
+      &:hover i {
+        background-image: url("../../../public/images/icons/page_next_white@2x.png");
+      }
+    }
+
+    &.prev {
+      i {
+        background-image: url("../../../public/images/icons/page_prev_grey@2x.png");
+      }
+
+      &:hover i {
+        background-image: url("../../../public/images/icons/page_prev_white@2x.png");
+      }
+    }
+
+    &.first {
+      i {
+        background-image: url("../../../public/images/icons/page_first_grey@2x.png");
+      }
+
+      &:hover i {
+        background-image: url("../../../public/images/icons/page_first_white@2x.png");
+      }
+    }
+
+    &.last {
+      i {
+        background-image: url("../../../public/images/icons/page_last_grey@2x.png");
+      }
+
+      &:hover i {
+        background-image: url("../../../public/images/icons/page_last_white@2x.png");
+      }
+    }
+  }
+
+  // transparent
+  &.t {
+    @include column($justify: center, $align: center);
+    background: transparent;
+    color: $color-font-light;
+    font-weight: $weight-semi;
+    font-size: 1.125rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    line-height: 2.5rem;
+    border-radius: 1.5rem;
+    padding: 0 0.875rem;
+
+    &:hover {
+      // background: green;
+      color: $color-font-main;
+    }
+  }
+
+  &.tx {
+    font-family: $font-body;
+    padding: 0;
+    background: transparent;
+    font-size: 0.875rem;
+    font-weight: $weight-semi;
+    color: $color-font-main;
+    text-transform: capitalize;
+    letter-spacing: 0px;
+  }
+
+  // SIZES
+
+  &,
+  // Default size
+  &.m {
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 0.75rem 1.125rem;
+
+    i {
+      font-size: 1.125rem;
+      line-height: 1.125rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &.s {
+    font-size: 0.875rem;
+    line-height: 1rem;
+    padding: 0.375rem 1rem;
+
+    i {
+      font-size: 1.125rem;
+      line-height: 1.125rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.button-list {
+  @include row($align: center);
+
+  &.split {
+    justify-content: space-between;
+  }
+}
+
+.pando-switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 20px;
+  margin-left: 10px;
+  background: transparent linear-gradient(90deg, #00FFFF 0%, #4ED0FF 27%, #E370FF 84%, #E26CFF 100%) 0% 0% no-repeat padding-box;
+}
+
+.pando-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pando-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background-color: $color-grey-dark;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.pando-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  border-radius: 50%;
+  background-color: $color-white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked+.pando-slider {
+  background-color: $color-pando-blue-light;
+}
+
+input:focus+.pando-slider {
+  box-shadow: 0 0 1px $color-pando-blue-light;
+}
+
+input:checked+.pando-slider:before {
+  -webkit-transform: translateX(12px);
+  -ms-transform: translateX(12px);
+  transform: translateX(12px);
+}
