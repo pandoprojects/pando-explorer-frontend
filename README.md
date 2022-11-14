@@ -47,7 +47,7 @@ The build is minified and the filenames include the hashes.
 For more detail about projects please go thourgh our [official Documenation](https://docs.pandoproject.org/)
 
 ## API Reference
-This is the Explorer API reference link [Click here](https://chainapi.pandoproject.org/)
+This is the Explorer API reference link [Click here]([https://chainapi.pandoproject.org/](https://chainapi.pandoproject.org/#b8aa0cf5-dd39-4cd3-985d-615d8ff1de49))
 
 License
 The Explorer backend application reference implementation is licensed under the [GNU License](https://github.com/pandoprojects/pando-explorer-frontend/blob/main/LICENSE)
