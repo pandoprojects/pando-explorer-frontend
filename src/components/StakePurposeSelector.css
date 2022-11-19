@@ -1,0 +1,55 @@
+.StakePurposeSelector {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.StakePurposeSelectorItem {
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px dashed #B5B5B5;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.StakePurposeSelectorItem__title {
+    font-size: 19px;
+    font-weight: normal;
+    line-height: 21px;
+    color: white;
+    text-decoration: none;
+    cursor: inherit;
+}
+
+.StakePurposeSelectorItem__subtitle {
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 16px;
+    color: #92a2d6;
+    text-decoration: none;
+    cursor: inherit;
+}
+
+.StakePurposeSelectorItem--is-selected {
+    border: 1px solid #893dfc;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.StakePurposeSelectorItem--is-selected .StakePurposeSelectorItem__title {
+    color: #ffffff;
+}
+
+.StakePurposeSelectorItem--is-selected .StakePurposeSelectorItem__subtitle {
+    color: white;
+}
+
+.StakePurposeSelectorItem--is-disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}

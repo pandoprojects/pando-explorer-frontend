@@ -1,0 +1,96 @@
+.ContractPage {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    border-radius: 49px;
+    opacity: 1;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+}
+
+.ContractPage__detail-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    padding: 10px;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 20px;
+    margin-top: 30px;
+    /* height: 445px; */
+}
+.ContractPage__detail-view  .TabBarItem--is-active1{
+    transform: inherit;
+    background: #D06EFF 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+}
+.past4r{
+    position: relative;
+}
+.NavBar__wallet-copy-address-icon1 img{
+    width: 24px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+.NavBar__wallet-copy-address-icon1 img:hover{
+    transform: scale(1.2);
+}
+.past4r span{
+    color: #aeadad;
+    position: absolute;
+    right: 9px;
+    top: 9px;
+}
+.RoundedInput.form-control.pag5{
+    padding-right: 60px;
+}
+.DeployContractContent,
+.InteractWithContractContent {
+    padding-top: 22px;
+    padding-bottom: 44px;
+    margin-left: 16px;
+}
+.InteractWithContractContent .FormSectionTitle{
+    text-align: left;
+}
+.InteractWithContractContent .GradientButton{
+    background: #D06EFF 0% 0% no-repeat padding-box;
+}
+.DeployContractContent .FormColumn:first-child{
+    padding-right: 20px;
+}
+.DeployContractContent .FormColumn:last-child{
+    padding-left: 20px;
+}
+
+
+.ContractPage textarea {
+    height: 174px;
+    padding-top: 10px;
+    margin-bottom: 10px !important;
+}
+
+.ContractPage input {
+    margin-bottom: 20px !important; 
+    border-radius: 4px;
+}
+
+.ContractPage select {
+    margin-bottom: 20px !important;
+}
+
+.ContractPage form .InputError {
+   
+    margin-bottom: 20px;
+}
+@media (max-width: 991px){
+    .DeployContractContent .FormColumn:first-child, .DeployContractContent .FormColumn:last-child{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .TabBar1{
+        padding: 0px 0px 0px 8px;
+    }
+}

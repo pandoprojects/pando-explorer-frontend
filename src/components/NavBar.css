@@ -1,0 +1,352 @@
+.NavBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: transparent linear-gradient(180deg, #2f3944 0%, #414d5a 100%) 0% 0% no-repeat padding-box;
+  flex-shrink: 0;
+}
+
+.NavBar1 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #1f0a4d;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.dropdown-item:focus, .dropdown-item:hover
+{
+  background: initial!important;
+}
+.NavBar__logo {
+  height: 50px;
+  margin-top: -20px;
+  align-self: center;
+}
+
+.NavBar--is-centered {
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.NavBar--is-end {
+  justify-content: end;
+}
+
+.NavBar__account {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.NavBar__wallet {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.NavBar__wallet-title {
+  font-size: 14px;
+  font-weight: normal;
+  color: #8a8fb5;
+  margin-right: 6px;
+}
+
+.NavBar__wallet-address {
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
+}
+
+.NavBar__wallet-copy-address-icon {
+  cursor: pointer;
+  margin-left: 6px;
+  margin-top: -3px;
+  float: right;
+  transition: 0.3s all ease-in-out;
+}
+
+
+.NavBar__wallet-copy-address-icon:hover {
+  transform: scale(1.2);
+}
+
+.NavBar__wallet-copy-address-icon img {
+  height: 25px;
+  margin-top: 5px;
+}
+
+.NavBar__logout {
+  color: #8a8fb5;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: opacity, 0.2s, ease-in-out;
+  position: relative;
+  z-index: 99;
+}
+
+.imgClass {
+  position: absolute;
+  right: 10px;
+  top: 13px !important;
+}
+
+.NavBar__network-badge {
+  position: relative;
+  padding: 0;
+  padding-left: 11px;
+  padding-right: 22px;
+  line-height: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  background: #29b3eb;
+  background: linear-gradient(to right, #29b3eb 0%, #21edba 100%);
+  background-size: 100%;
+  color: #1c243b;
+  padding-top: 3px;
+  height: 18px;
+  box-sizing: border-box;
+}
+
+.NavBar__network-badge:after {
+  display: block;
+  content: "";
+  width: 9px;
+  height: 5px;
+  background: transparent url("/img/icons/dropdown-arrow@2x.png") no-repeat;
+  background-size: 9px 5px;
+  position: absolute;
+  right: 7px;
+  top: 6px;
+}
+
+.NavBar__network-badge:hover {
+  background: #21edba;
+}
+
+.NavBar__network-badge.NavBar__network-badge--is-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #1c243b;
+  padding-left: 11px;
+  padding-right: 11px;
+  color: #8a8fb5;
+}
+
+.NavBar__network-badge.NavBar__network-badge--is-disabled:after {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .NavBar .NavBar__account {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .NavBar__wallet {
+    display: block;
+  }
+
+  .NavBar__wallet-copy-address-icon {
+    position: relative;
+    float: none;
+  }
+
+  .NavBar__wallet-copy-address-icon img {
+    height: 20px;
+  }
+}
+
+.NavBar__wallet-address {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  float: right;
+  z-index: 1;
+  bottom: 10px;
+  border-radius: 17px;
+}
+.NavBar--is-centered .dropdown {
+  text-align: center;
+}
+.networktype {
+  color: #fff !important;
+  justify-content: center;
+  display: flex;
+  transition: all 500ms ease;
+}
+.networktype:hover, .fauc .footercustoma a:hover{
+  color: #B88BFE!important;
+}
+.ver-fac div {
+  display: inline-block;
+}
+.networktype.fauc {
+  padding-left: 15px;
+}
+.fauc .footercustoma {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 4px;
+  padding-left: 4px;
+}
+.footercustoma a {
+  color: #B88BFE;
+}
+.fauc .footercustoma a {
+  color: #fff;
+  transition: all 500ms ease;
+}
+.fauc .footercustoma a span{
+  color: #B88BFE;
+}
+.dd-button {
+  top: 10px;
+  right: 0px;
+  width: 164px;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 15px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: white;
+  position: relative;
+  background: #D06EFF 0% 0% no-repeat padding-box;
+  box-shadow: inset 0px 6px 6px #ffffff45;
+  border-radius: 49px;
+  opacity: 1;
+  font-size: 18px;
+}
+
+.dd-button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid white;
+}
+
+.dd-button:hover {
+  color: white;
+  font-weight: bold;
+}
+
+.dd-input {
+  display: none;
+}
+
+.dd-menu {
+  z-index: 1;
+  height: 182px;
+  width: 144px;
+  overflow-y: scroll;
+  top: 5px !important;
+  border-radius: 15px;
+  position: absolute;
+  top: 100%;
+  border: 0px solid #ccc;
+  border-radius: 4px;
+  padding: 0;
+  margin: 2px 0 0 0;
+  list-style-type: none;
+  color: white;
+  right: 0 !important;
+  left: auto !important;
+  background: #313131f7 0% 0% no-repeat padding-box;
+  box-shadow: inset 0px 6px 6px #ffffff45;
+  border-radius: 26px;
+  opacity: 1;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+.dropdownimgclass {
+  float: inline-end;
+}
+
+.dd-input+.dd-menu {
+  display: none;
+}
+
+.dd-input:checked+.dd-menu {
+  display: block;
+}
+
+.dd-menu li {
+  padding: 5px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dd-menu li:hover {
+  color: white;
+  background-color: rgba(124, 129, 163, 0.35);
+  font-weight: 200;
+}
+
+.dd-menu li a {
+  display: block;
+  margin: -10px -20px;
+  padding: 10px 20px;
+}
+
+.dd-menu li.divider {
+  padding: 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .dropdown {
+    float: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .right-side-details p {
+    margin-bottom: 0px;
+    font-weight: 600;
+    padding: 10px 15px !important;
+    font-size: 14px;
+  }
+  .ver-fac div {
+    display: flex;
+}
+.NavBar--is-centered {
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-right: 0px;
+
+}
+}

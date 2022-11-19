@@ -1,0 +1,104 @@
+.ReceiveModal {
+    width: 52vw;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    border-radius: 49px !important;
+    opacity: 1;
+    backdrop-filter: blur(30px);
+}
+
+.ReceiveModal__title {
+    font-size: 20px;
+    font-weight: 200;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.ReceiveModal img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.ReceiveModal__public-address-title {
+    font-size: 16px;
+    font-weight: 300;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+
+}
+
+.ReceiveModal__public-address .GhostButton {
+    background: none;
+    padding: 0;
+}
+
+.ReceiveModal__title img {
+    margin-left: 15px;
+    width: 99px;
+    height: 94px;
+    margin-bottom: 10px;
+}
+
+.ReceiveModal__public-address {
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    color: white;
+    border-bottom: 2px solid #4a4a4a;
+    display: flex;
+}
+
+.ReceiveModal__public-address p {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.ReceiveModal__buttons {
+    display: inline-block;
+    flex-direction: column;
+    padding: 7px;
+    background: none;
+    background: none;
+}
+
+.ReceiveModal__qr {
+    display: flex;
+    align-self: center;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.ReceiveModal__faucet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.ReceiveModal__faucet-button {
+    width: 110px;
+}
+
+.ReceiveModal__faucet-message {
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    color: white;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+@media (max-width: 767px){
+    .ReceiveModal__title img {
+        width: 70px;
+        height: 70px;
+    }
+}

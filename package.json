@@ -1,0 +1,73 @@
+{
+  "name": "pando-network-web-wallet",
+  "version": "2.0.0",
+  "private": true,
+  "license": "GNU General Public License v3.0",
+  "dependencies": {
+    "@ledgerhq/hw-app-eth": "^4.72.1",
+    "@ledgerhq/hw-transport-u2f": "^4.72.1",
+    "@types/crypto-js": "^4.0.2",
+    "await-timeout": "^0.3.0",
+    "axios": "^0.21.1",
+    "bignumber.js": "^8.0.1",
+    "classnames": "^2.2.6",
+    "crypto-js": "^4.1.1",
+    "elliptic": "^6.5.4",
+    "ethereumjs-util": "^6.1.0",
+    "ethers": "^4.0.26",
+    "i18next": "^21.6.10",
+    "lodash": "^4.17.11",
+    "moment": "^2.29.1",
+    "react": "^16.8.2",
+    "react-alert": "4.0.4",
+    "react-alert-template-basic": "^1.0.0",
+    "react-app-rewire-hot-loader": "^2.0.1",
+    "react-app-rewired": "^2.1.6",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-dom": "^16.8.2",
+    "react-hook-form": "^5.7.2",
+    "react-hot-loader": "^4.12.21",
+    "react-i18next": "^11.15.3",
+    "react-md-spinner": "^0.3.0",
+    "react-modal": "^3.8.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^3.0.0",
+    "react-transition-group": "^2.6.0",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.6.4",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "trezor-connect": "^7.0.3",
+    "typescript": "^4.4.2",
+    "web3": "^1.0.0-beta.52"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build-new": "react-app-rewired build",
+    "test-new": "react-app-rewired test --env=jsdom",
+    "start-old": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "css-loader": "^2.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

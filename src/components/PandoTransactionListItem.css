@@ -1,0 +1,147 @@
+.PandoTransactionListItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #4B516E;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    min-height: calc(132px - 30px);
+    cursor: pointer;
+    padding-right: 10px;
+    transition: background-color, 0.3s, ease-in-out;
+}
+
+.PandoTransactionListItem__left-container{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.PandoTransactionListItem__right-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.PandoTransactionListItem *{
+    cursor: pointer;
+}
+
+.PandoTransactionListItem:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+
+.PandoTransactionListItem__top-container{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 22px;
+}
+
+.PandoTransactionListItem__middle-container{
+    display: flex;
+    flex: 2;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.PandoTransactionListItem__bottom-container{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 22px;
+}
+
+.PandoTransactionListItem__address-container{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+}
+
+.PandoTransactionListItem__address-prefix{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #92A2D6;
+    margin-right: 5px;
+    height: 16px;
+}
+
+.PandoTransactionListItem__address{
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 18px;
+    color: white;
+    height: 18px;
+    padding-right: 5px;
+    text-overflow: ellipsis;
+}
+
+.PandoTransactionListItem__amount-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 15px;
+}
+
+.PandoTransactionListItem__amount{
+    font-size: 28px;
+    font-weight: 100;
+    line-height: 28px;
+    height: 28px;
+    color: white;
+    text-align: right;
+}
+
+.PandoTransactionListItem__amount-icon{
+    height: 20px;
+    margin-left: 6px;
+}
+
+.PandoTransactionListItem__date{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 14px;
+    color: #7A88B5;
+    height: 14px;
+}
+
+.PandoTransactionListItem__token-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 19px;
+}
+
+.PandoTransactionListItem__token-symbol{
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 15px;
+    color: #92A2D6;
+    height: 15px;
+}
+
+.PandoTransactionListItem__token-icon{
+    height: 18px;
+    width: 18px;
+    margin-left: 5px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .PandoTransactionListItem__amount{
+        font-size: 20px;
+    }
+}

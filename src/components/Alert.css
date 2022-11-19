@@ -1,0 +1,38 @@
+.Alert {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: transparent linear-gradient(180deg, #D06EFF 0%, #3b77ab 100%) 0% 0% no-repeat padding-box;
+    padding: 12px;
+    min-width: 500px;
+    box-sizing: border-box;
+    min-height: 60px;
+    box-shadow: 0px 0px 56px 2px rgba(0, 0, 0, 0.2);
+}
+
+.Alert__icon {
+    width: 24px;
+    align-self: center;
+}
+
+.Alert__message {
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: white;
+    flex: 1;
+}
+
+.Alert__close-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #ffffff;
+    outline: none;
+}
+
+.Alert__close-button img {
+    width: 16px;
+}

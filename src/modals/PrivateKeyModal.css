@@ -1,0 +1,79 @@
+.PrivateKeyModal {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    padding: 15px 148px;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    border-radius: 49px !important;
+    opacity: 1;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+}
+
+.PrivateKeyModal__title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    margin-bottom: 6px;
+}
+
+.PrivateKeyModal__instructions {
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 20px;
+    color: #B0B0B0;
+    margin-bottom: 40px;
+}
+
+.custompricvetkeyr {
+    width: 50px;
+    text-align: center;
+    margin: 0 auto !important;
+}
+
+.iconxsxa {
+    position: absolute;
+    z-index: 999;
+    right: 2%;
+    top: 40%;
+}
+
+.private-ky {
+    width: 100%;
+    position: relative;
+}
+
+.PrivateKeyModal__private-key {
+    text-align: center;
+    position: relative;
+    background: transparent;
+    padding: 40px 50px;
+    color: #fff;
+    margin: 20px 0;
+    width: 100%;
+    border: 2px solid #FFFFFF;
+    border-radius: 53px;
+    opacity: 1;
+    font-size: 18px;
+    color: red;
+
+}
+
+.PrivateKeyModal .GradientButton {
+    align-self: center;
+    min-width: 200px;
+}
+@media only screen and (max-width: 767px) {
+    .PrivateKeyModal__title{
+        font-size: 18px;
+    }
+    .PrivateKeyModal__instructions {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,71 @@
+.StakesTable {
+    color: white;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.StakesTable thead {
+    border-bottom: 1px solid rgba(59, 66, 99, 1);
+    background-color: rgba(0, 0, 0, 0.05);
+
+}
+
+.StakesTable th {
+    text-align: center;
+    height: 50px;
+    line-height: 44px;
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.csev h5 {
+    padding: 1em;
+    font-weight: bold;
+}
+
+.csev {
+    max-height: 600px;
+    overflow: auto;
+    min-height: 370px;
+    padding-bottom: 60px;
+}
+
+.StakesTable tr {
+    text-align: left;
+
+    line-height: 44px;
+    border-bottom: 1px solid rgba(59, 66, 99, 1);
+}
+
+.StakesTable td {
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.StakesTable__header--return-height {
+    width: 150px;
+}
+
+.StakesTable__header--amount {}
+
+.StakesTable__header--holder {
+    width: 450px;
+}
+
+.fr-time {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.fr-time p {
+    margin-bottom: 0;
+    margin-left: 5px;
+}

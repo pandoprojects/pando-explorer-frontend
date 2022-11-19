@@ -1,0 +1,558 @@
+.CreateWalletPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.CreateWalletPage__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.CreateWalletPage__title {
+    font-size: 30px;
+    text-align: center;
+    line-height: 28px;
+    min-height: 28px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.CreateWalletPage__title img {
+    display: none;
+}
+
+.CreateWalletPage__subtitle {
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    color: #8a8fb5;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+input#agreedToTerms {
+    width: auto;
+    flex: 0 0 16px;
+}
+
+.CreateWalletPage__subtitle a {
+    margin-left: 6px;
+}
+
+.ChoosePasswordCard {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    padding: 0px 150px;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    border-radius: 49px;
+    opacity: 1;
+    backdrop-filter: blur(30px);
+}
+
+label.lab {
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.ChoosePasswordCard__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 17px;
+    padding-top: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 28px;
+}
+
+.ChoosePasswordCard__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.ChoosePasswordCard__footer {
+    margin-top: auto;
+    margin-top: 30px;
+}
+
+a.GradientButton:hover {
+    color: #ffffff;
+}
+
+.ChoosePasswordCard__footer .GradientButton {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.ChoosePasswordCard__title {
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 26px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    padding-bottom: 16px;
+}
+
+.ChoosePasswordCard__subtitle {
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 20px;
+    color: #B0B0B0;
+}
+
+.ChoosePasswordCard__inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.ChoosePasswordCard__password-input {
+    outline: none !important;
+    border: none !important;
+    padding: 20px 12px;
+    font-size: 20px;
+    height: 60px !important;
+    resize: none;
+    border-radius: 33px;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    letter-spacing: 0px;
+    color: #5D5B5B;
+    margin-bottom: 0px;
+
+}
+
+.ChoosePasswordCard__password-input:last-of-type {
+    margin-bottom: 2px;
+}
+
+.ChoosePasswordCard__error {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    line-height: 20px;
+    color: #ff1d25;
+    min-height: 20px;
+}
+
+::placeholder {
+    color: #92a2d6;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #92a2d6;
+}
+
+::-ms-input-placeholder {
+    color: #92a2d6;
+}
+
+.ChoosePasswordCard__message-wrapper {
+    display: flex;
+    flex: 1;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.ChoosePasswordCard__message {
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    line-height: 16px;
+    color: white;
+    margin-left: 8px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+}
+
+.ChoosePasswordCard__message span {
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 1.3px;
+    color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+}
+
+.MnemonicWarningCard {
+    display: flex;
+    width: 100%;
+    min-height: 435px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    padding: 0px 150px;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    border-radius: 49px;
+    opacity: 1;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+}
+
+.MnemonicWarningCard__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    padding-top: 0;
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+}
+
+.keystore {
+    margin: 2px;
+    font-size: 18px;
+
+}
+
+.keystore :active {
+    background: red;
+    transition: all 0.1s ease-out;
+    border: 9px solid #fafafa;
+    box-shadow: 0 7px 30px #cc0f0fa6;
+    color: #cc0f0f4d;
+}
+
+
+
+
+.MnemonicWarningCard__header {
+    margin-bottom: 40px;
+}
+
+.MnemonicWarningCard__footer {
+    margin-top: auto;
+    margin-top: 30px;
+}
+
+.MnemonicWarningCard__footer .GradientButton {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.MnemonicWarningCard__title {
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 26px;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.MnemonicWarningCard__subtitle {
+    font-size: 22px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 20px;
+    color: #B0B0B0;
+}
+
+.MnemonicWarningCard__warning-title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 20px;
+    color: #ff1d25;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.MnemonicWarningCard__warning-body {
+    font-size: 18px;
+    font-weight: 100;
+    text-align: center;
+    line-height: 20px;
+    margin-bottom: 15px;
+    color: #B0B0B0;
+    width: 65%;
+}
+
+.MnemonicWarningCard__warning {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+}
+
+.MnemonicWarningCard__icon {
+    height: 130px;
+    width: 242px;
+    align-self: center;
+}
+
+.MnemonicCard {
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    padding: 50px 150px 0px;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    border-radius: 49px;
+    opacity: 1;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+}
+
+.MnemonicCard__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    padding-top: 0;
+    margin-left: auto;
+    width: 100%;
+
+    margin-right: auto;
+}
+
+.MnemonicCard__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.MnemonicCard__footer {
+    margin-top: auto;
+    margin-top: 30px;
+}
+
+.MnemonicCard__footer .GradientButton {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.MnemonicCard__title {
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 26px;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.MnemonicCard__subtitle {
+    font-size: 15px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+}
+
+.MnemonicCard__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.MnemonicCard__instructions {
+    font-size: 22px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 30px;
+    color: #B0B0B0;
+    margin-bottom: 30px;
+}
+
+.MnemonicCard__phrase-container {
+    text-align: center;
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    border: 2px solid #01f2e900;
+    width: 80%;
+    margin-bottom: 25px;
+}
+
+.MnemonicCard__phrase-container p {
+    line-height: 25px;
+    font-size: 18px;
+    word-spacing: 6px;
+    font-weight: 900;
+    color: #060606;
+    margin: 0;
+    user-select: text;
+    text-align: center;
+}
+
+.MnemonicCard__view-private-key {
+    font-size: 20px;
+    font-weight: normal;
+    text-decoration: none;
+    margin-top: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #DFDFDF;
+}
+
+.WalletCreationCompleteCard {
+    width: 100%;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    padding: 15px 148px;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    border-radius: 49px !important;
+    opacity: 1;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+}
+
+.imgcss {
+    width: 30%;
+    margin-top: 40px;
+}
+
+.class-compketealwfedws {
+    padding: 40px 0px;
+}
+
+.class-compketealwfedws p {
+    color: #B0B0B0;
+    font-size: 20px;
+}
+
+.class-compketealwfedws .GradientButton {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.WalletCreationCompleteCard__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 17px;
+    padding-top: 0;
+    margin-left: auto;
+    width: 100%;
+    max-width: 580px;
+    margin-right: auto;
+}
+
+.WalletCreationCompleteCard__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    margin-bottom: 17px;
+}
+
+.mnemonic {
+    margin: 4px;
+    font-size: 18px;
+}
+
+.Private Key {}
+
+.WalletCreationCompleteCard__footer {
+    margin-top: auto;
+}
+
+.WalletCreationCompleteCard__title {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 26px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.WalletCreationCompleteCard__subtitle {
+    font-size: 15px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 20px;
+    color: #92a2d6;
+}
+
+.WalletCreationCompleteCard__success-title {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 20px;
+    color: #1bded0;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.WalletCreationCompleteCard__success-body {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 20px;
+    color: #92a2d6;
+}
+
+.WalletCreationCompleteCard__success {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+}
+
+.WalletCreationCompleteCard__icon {
+    height: 116px;
+    width: auto;
+    align-self: center;
+}
+
+@media(max-width: 991px) {
+    .class-compketealwfedws {
+        margin-top: 0;
+    }
+
+    .CreateWalletPage__title {
+        margin-top: 60px;
+    }
+
+    .ChoosePasswordCard {
+        padding: 0
+    }
+}
+@media(max-width: 767px) {
+    .CreateWalletPage__title {
+        margin-top: 30px;
+    }
+    .class-compketealwfedws h3{
+        font-size: 22px;
+    }
+}

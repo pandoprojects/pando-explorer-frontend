@@ -1,0 +1,62 @@
+.ModalOverlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #000000cf;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.Modal {
+    cursor: auto;
+}
+
+.Modal:focus {
+    outline: none;
+}
+
+.Modal__close-button {
+    display: inline-block;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 48px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 24px;
+    cursor: pointer;
+    background: #242F4B;
+    z-index: 9999;
+}
+
+.Modal__close-button img {
+    width: 48px;
+    height: 48px;
+}
+
+@media (max-width: 991px) {
+    .Modal {
+        width: 100%;
+    }
+
+    .Modal__close-button {
+        right: 0 !important;
+
+    }
+
+    .SendModal,
+    .ReceiveModal {
+        width: 100% !important;
+        min-height: auto !important;
+    }
+
+    .Moda.sddsdl {
+        width: 100% !important;
+    }
+}

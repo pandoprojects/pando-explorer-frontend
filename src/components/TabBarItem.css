@@ -1,0 +1,107 @@
+.TabBarItem {
+    display: block;
+    text-align: left;
+    padding: 20px 15px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.logoutcontainer {
+    float: right;
+    padding: 15px;
+}
+
+
+.TabBarItem--is-active1 .TabBarItem__icon,
+.TabBarItem__icon-active {
+    display: none;
+}
+
+.TabBarItem--is-active1 .TabBarItem__icon-active {
+    display: initial;
+}
+
+.TabBarItem--is-active1 {
+    transition: transform .2s;
+    transform: scale(1.1);
+}
+
+.TabBarItem__icon,
+.TabBarItem__icon-active {
+    width: 35px;
+    height: 35px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+.TabBarItem .TabBarItem__icon {
+    width: 35px;
+    height: 35px;
+}
+
+.sma .TabBarItem__icon-active {
+    display: none;
+}
+
+.TabBarItem__title {
+    font-size: 18px;
+    margin-top: 0px;
+    color: white;
+    display: inline;
+    margin-left: 10px;
+    word-break: break-word;
+    white-space: break-spaces;
+}
+
+.PageHeader .TabBarItem--is-active {
+    border-radius: 6px;
+    padding: 14px;
+    text-transform: capitalize;
+}
+
+
+
+.TabBarItem--is-active .TabBarItem__title,
+.TabBarItem:hover .TabBarItem__title {
+    color: white;
+}
+
+.TabBarItem--is-active .TabBarItem__icon-active {
+    display: inline-block;
+}
+
+.TabBarItem--is-active .TabBarItem__icon {
+    display: none;
+    position: relative;
+}
+
+.tab-wrapper-send-recieve a .TabBarItem__icon {
+    width: auto;
+    height: 26px;
+    padding-right: 0px;
+}
+@media (min-width: 1024px) and (max-width: 1600px) { 
+    .snd-rec .tab-wrapper-send-recieve a .TabBarItem__icon {
+        width: auto;
+        height: 20px;
+        padding-right: 0px;
+    }
+    .snd-rec .TabBarItem__title{
+        font-size: 14px;
+    }
+}
+@media(max-width: 1100px) {
+    .TabBarItem__title {
+        font-size: 14px;
+    }
+}
+@media(max-width: 767px) {
+    .TabBarItem {
+        display: flex;
+    }
+    .TabBarItem__title {
+        margin-top: 0px;
+    }
+}

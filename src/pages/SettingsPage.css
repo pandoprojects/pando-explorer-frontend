@@ -1,0 +1,65 @@
+.SettingsPage {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    color: white;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    border-radius: 49px;
+    opacity: 1;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+}
+
+.SettingsPage__detail-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 32px;
+    padding-right: 32px;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 20px;
+}
+
+.PageHeader.PageHeader__title {
+    text-align: center;
+}
+
+.SettingsSection {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding-bottom: 50px;
+}
+
+.transaction-table {
+    color: white;
+    overflow: auto;
+    max-height: 330px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.SettingsSection__title {
+    font-size: 24px;
+    font-weight: 100;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.InputTitle {
+    font-size: 16px;
+    font-weight: normal;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+@media (max-width: 768px) {
+    .SettingsPage__detail-view {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

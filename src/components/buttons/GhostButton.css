@@ -1,0 +1,76 @@
+.GhostButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 49px;
+    cursor: pointer;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background: #D06EFF;
+    font-size: 30px;
+    transition: 0.3s all ease-in-out;
+}
+.GradientButton
+{ transition: 0.3s all ease-in-out;
+
+}
+.tab-wrapper-send-recieve .TabBarItem 
+{
+    transition: 0.3s all ease-in-out;
+}
+.tab-wrapper-send-recieve .TabBarItem:hover
+{
+    transform: scale(1.05);
+}
+.GhostButton:hover{
+    transform: scale(1.05);
+}
+.GradientButton:hover{
+    transform: scale(1.01);
+}
+.GhostButton__icon {
+    height: 22px;
+    margin-right: 8px;
+}
+
+.GhostButton__title {
+    font-size: 18px;
+    font-weight: normal;
+    color: white;
+    cursor: pointer;
+}
+
+.GhostButton__spinner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.GhostButton--is-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width: 991px) {
+    .GhostButton {
+        margin-left: 0 !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    .StakesPage__header-buttons {
+        display: block !important;
+        position: relative !important;
+    }
+
+    .PageHeader {
+        height: auto !important;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .WithdrawStakeModal {
+        width: 100%!important;
+    }
+}

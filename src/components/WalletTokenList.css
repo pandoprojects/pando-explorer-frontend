@@ -1,0 +1,21 @@
+.WalletTokenList {
+    width: 100%;
+}
+
+.WalletTokenList__ethereum-balances-toggle {
+    display: block;
+    margin-top: 12px;
+    color: white;
+    margin-left: 21px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.WalletTokenList__ethereum-balances-warning {
+    display: block;
+    margin-top: 12px;
+    margin-left: 21px;
+    font-size: 13px;
+    color: #ed1e5c;
+    max-width: 290px;
+}

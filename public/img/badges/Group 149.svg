@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="476" height="410" viewBox="0 0 476 410">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="aqua"/>
+      <stop offset="0.272" stop-color="#4ed0ff"/>
+      <stop offset="0.839" stop-color="#e370ff"/>
+      <stop offset="1" stop-color="#e26cff"/>
+    </linearGradient>
+    <filter id="thumbs-up" x="329.232" y="153.111" width="123.672" height="119.269" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_149" data-name="Group 149" transform="translate(-629 -314)">
+    <ellipse id="Ellipse_6" data-name="Ellipse 6" cx="88" cy="55" rx="88" ry="55" transform="translate(779 464)" fill="#fff"/>
+    <g id="Group_148" data-name="Group 148" transform="translate(-14.96 9)">
+      <path id="wallet" d="M146.318,40.784H17.463V35.629l113.392-9.071v9.071h15.463V20.167c0-11.339-9.185-19.3-20.4-17.7L22.411,17.25C11.185,18.858,2,29.444,2,40.784V143.868a20.617,20.617,0,0,0,20.617,20.617h123.7a20.617,20.617,0,0,0,20.617-20.617V61.4A20.617,20.617,0,0,0,146.318,40.784ZM130.855,113a15.468,15.468,0,1,1,15.473-15.463A15.468,15.468,0,0,1,130.855,113Z" transform="translate(859.96 380.737)" fill="#01f2e9"/>
+      <g transform="matrix(1, 0, 0, 1, 643.96, 305)" filter="url(#thumbs-up)">
+        <path id="thumbs-up-2" data-name="thumbs-up" d="M24.216,44.53H2.2a2.2,2.2,0,0,0-2.2,2.2V99.567a2.2,2.2,0,0,0,2.2,2.2H24.216a2.2,2.2,0,0,0,2.2-2.2V46.731A2.2,2.2,0,0,0,24.216,44.53Zm81.455,2.2A11.023,11.023,0,0,0,94.664,35.724H66.947c1.343-4.09,3.5-11.589,3.5-17.612C70.448,8.562,62.333.5,57.239.5a13.815,13.815,0,0,0-7.983,2.681A2.219,2.219,0,0,0,48.433,4.9V19.829L35.752,47.308,32.04,49.162a2.215,2.215,0,0,0-1.22,1.973V90.761a2.217,2.217,0,0,0,.643,1.559c3.3,3.293,10.695,5.046,14.768,5.046H86.959a9.916,9.916,0,0,0,8.872-14.31,9.863,9.863,0,0,0,4.4-13.209,9.843,9.843,0,0,0,2.576-15.741A10.862,10.862,0,0,0,105.672,46.731Z" transform="translate(338.23 158.61)" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

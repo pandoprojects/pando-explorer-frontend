@@ -1,0 +1,133 @@
+.DepositStakeModal {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff1c 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 6px 6px #ffffff45;
+    opacity: 1;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    width: 800px;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.DepositStakeModal__title {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.DepositStakeModal__title img {
+    margin-right: 10px;
+}
+
+.rtdepositestake {
+    width: 100%;
+    background: transparent;
+    margin-top: 10px;
+    float: none;
+}
+
+.rtdepositestake .dd-button {
+    display: block;
+    position: static;
+    background: transparent;
+    border: 1px solid #687399;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 2px;
+    border: 2px dashed #B5B5B5;
+    border-radius: 30px;
+}
+
+.rtdepositestake.for-active .dd-button {
+    display: block;
+    background: transparent;
+    background-color: transparent;
+    border: 0px solid #687399;
+    width: 100%;
+    border-radius: 4px;
+    border-radius: 2px;
+    border: 0px dashed #B5B5B5;
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 0;
+}
+
+.for-active a.StakePurposeSelectorItem {
+    display: block;
+    position: static;
+    background: transparent;
+    border: 1px solid #687399;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px dashed #B5B5B5;
+    border-radius: 30px;
+    padding: 18px 25px;
+}
+
+.for-active a.StakePurposeSelectorItem.StakePurposeSelectorItem--is-selected {
+    border: 1px solid #893dfc !important;
+}
+
+.internaldepositeclass .StakePurposeSelectorItem {
+    border: none;
+    margin: 0;
+    padding: 5px;
+    display: block;
+}
+
+.imgClass {
+    top: 43% !important;
+}
+
+.rtdepositestake .dd-menu {
+    width: 100%;
+    border-radius: 4px;
+    border: none;
+    padding: 0px 10px;
+}
+
+.rtdepositestake .dd-menu li {
+    padding: 0
+}
+
+.rtdepositestake .dd-menu li a {
+    margin: 0;
+    text-align: left;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #687399;
+    border-radius: 0;
+}
+
+.StakePurposeContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.StakePurposeContainer__instructions {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 21px;
+    color: white;
+    text-decoration: none;
+    cursor: inherit;
+    margin-bottom: 40px;
+}
+
+.StakePurposeContainer__footer {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+@media (max-width: 767px) {
+    .DepositStakeModal {
+        width: 100%;
+    }
+}

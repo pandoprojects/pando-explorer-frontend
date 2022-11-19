@@ -1,0 +1,74 @@
+.GradientButton {
+    display: block;
+    padding: 15px 45px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    background: transparent linear-gradient(90deg, #4d21d6 21%, #b88bfe 100%) 0% 0% no-repeat padding-box;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+    box-shadow: inset 0px 6px 6px #00000029, 0px 3px 6px #00000029;
+    border-radius: 28px;
+    opacity: 1;
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    font-size: 18px;
+    transition: all 0.2s ease-in-out;
+}
+
+.ExportKeystoreContent a.GradientButton {
+    background: #D06EFF 0% 0% no-repeat padding-box;
+}
+
+.InteractWithContractContent a.GradientButton {
+    margin-top: 8px;
+}
+
+.DeployContractContent a.GradientButton {
+    margin-top: 19px;
+    background: #D06EFF 0% 0% no-repeat padding-box;
+}
+
+.GradientButton:hover {
+    box-shadow: 0 0 4px rgb(137 61 252);
+
+}
+
+.newGradientButton {
+    display: block;
+    border-radius: 4px;
+    padding: 15px 45px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+    background: transparent linear-gradient(90deg, #00FFFF 0%, #4ED0FF 27%, #E370FF 84%, #E26CFF 100%) 0% 0% no-repeat padding-box;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.GradientButton:active {
+    box-shadow: 0 0 25px rgba(33, 237, 186, 0.25);
+}
+
+.GradientButton:active {
+    box-shadow: 0 0 25px rgba(33, 237, 186, 0.25);
+}
+
+.GradientButton--is-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #ffffff38 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 6px 6px #00000029, 0px 3px 6px #00000029;
+    border-radius: 28px;
+    opacity: 0.5;
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    font-size: 18px;
+}
+
+.UnlockWalletViaPrivateKey__footer .GradientButton,
+.UnlockWalletViaMnemonicPhrase__footer .GradientButton {
+    width: 20%;
+    margin: auto;
+}

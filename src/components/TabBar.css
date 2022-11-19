@@ -1,0 +1,137 @@
+.TabBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 70px;
+    padding-left: 29px;
+    padding-right: 29px;
+}
+
+.TabBar1 {
+    margin-top: 20px;
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    height: 70px;
+    padding: 0px 0px 0px 20px;
+}
+
+.side-nav a.TabBarItem {
+    padding: 14px 14px 13px;
+    display: flex;
+}
+
+.TabBar--is-centered {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.TabBar--is-centered .TabBarItem {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.TabBar--is-condensed .TabBarItem__title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #92a2d6;
+}
+
+.TabBar--is-condensed .TabBarItem {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+@media (min-width: 1100px) and (max-width: 1600px) {
+    .side-nav{
+         min-height: 500px;
+    }
+}
+@media (min-width: 991px) and (max-width: 1400px) {
+    .TabBar1 {
+        padding: 0px 0px 0px 15px;
+    }
+
+    .col-md-2.side-nav.for-wi3 {
+        flex: 0 0 15.666667%;
+        max-width: 15.666667%;
+    }
+
+    .col-md-10.fkju7 {
+        flex: 0 0 84.333333%;
+        max-width: 84.333333%;
+    }
+}
+
+@media(max-width: 991px) {
+    .TabBar--is-centered .TabBarItem {
+        margin: 0;
+    }
+
+    .TabBar--is-centered {
+        display: block;
+        height: auto
+    }
+
+    .FormColumn {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .FormColumns {
+        display: block;
+        margin: 0 !important
+    }
+
+    .DeployContractContent,
+    .InteractWithContractContent {
+        margin: 0 !important;
+    }
+
+    .TabBarItem__icon,
+    .TabBarItem__icon-active {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .TabBarItem__title {
+        display: inline-block;
+        word-break: break-word;
+        white-space: break-spaces;
+    }
+
+    .col-md-10.fkju7 {
+        flex: 0 0 78.333333%;
+        max-width: 78.333333%;
+    }
+
+    .col-md-2.side-nav.for-wi3 {
+        flex: 0 0 20.666667%;
+        max-width: 20.666667%;
+    }
+
+}
+
+@media(max-width: 767px) {
+    .col-md-2.side-nav.for-wi3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .col-md-10.fkju7 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .side-nav{
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-10.fkju7 {
+        flex: 100%;
+        max-width: 100%;
+    }
+}

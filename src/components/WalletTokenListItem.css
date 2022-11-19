@@ -1,0 +1,107 @@
+.WalletTokenListItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 110px;
+    padding-left: 22px;
+    padding-right: 22px;
+    border-bottom: 1px solid rgba(75, 81, 110, 0.5);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    text-decoration: none;
+    position: relative;
+    margin-left: 14px;
+}
+
+.WalletTokenListItem__active-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    background-size: 100%;
+    display: none;
+}
+
+.WalletTokenListItem__token-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.WalletTokenListItem__token-balance-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.WalletTokenListItem__token-icon {
+    height: 40px;
+    margin-right: 17px;
+    margin-left: 50px;
+}
+
+.WalletTokenListItem__token-name {
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 16px;
+    color: #92a2d6;
+    text-decoration: none;
+}
+
+.WalletTokenListItem__token-balance {
+    font-size: 19px;
+    font-weight: normal;
+    line-height: 21px;
+    color: white;
+    text-decoration: none;
+}
+
+.WalletTokenListItem__action-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-left: 58px;
+    margin-top: 20px;
+}
+
+.WalletTokenListItem__action-buttons .GhostButton:first-child {
+    margin-right: 12px;
+}
+
+.WalletTokenListItem--is-active {
+    background-color: #190546;
+}
+
+.WalletTokenListItem:hover {
+    background-color: #190546;
+}
+
+.WalletTokenListItem--is-active .WalletTokenListItem__active-indicator {
+    display: block;
+}
+
+.dashboard-item li {
+    width: 300px;
+    margin: 10px auto;
+
+    border: 1px solid blueviolet;
+    padding: 5px;
+    box-shadow: 13px 8px 11px -6px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 13px 8px 11px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 13px 8px 11px -6px rgba(0, 0, 0, 0.75);
+}
+
+@media(max-width: 1200px) {
+    .dashboard-item li {
+        margin-right: 3px;
+        width: calc(50% - 20px);
+    }
+}
+
+@media(max-width: 991px) {
+    .dashboard-item li {
+        width: 100%;
+    }
+
+    .WalletPage__master-view {
+        width: 92% !important;
+    }
+}

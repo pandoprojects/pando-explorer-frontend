@@ -1,0 +1,36 @@
+.StakesPage {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.StakesPage__detail-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 5px;
+}
+
+.StakesPage__detail-view-spinner {
+    align-self: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.tbaleodhe {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.sd {
+    display: block;
+    text-align: center;
+    margin: 15px;
+}
+
+.metatron-note {
+    color: red !important;
+}

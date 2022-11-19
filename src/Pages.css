@@ -1,0 +1,38 @@
+.Pages {
+    display: flex;
+    flex: 1;
+    margin-top: -30px;
+}
+
+.Pages--wallet {
+    border-radius: 8px;
+    width: 75%;
+    float: left;
+    height: 545px;
+    padding-right: 10px;
+}
+
+.history-lable {
+    font-size: 30px !important;
+    margin: 31%;
+    margin-top: 12%;
+}
+
+.Pages.Pages--wallet {
+    margin-top: 0px;
+}
+
+@media (max-width:991px) {
+    .Pages--wallet {
+        width: 100%;
+        float: left;
+        height: auto;
+        padding-right: 0px;
+    }
+
+    .Pages {
+        display: flex;
+        flex: 1;
+        margin-top: 0px;
+    }
+}
