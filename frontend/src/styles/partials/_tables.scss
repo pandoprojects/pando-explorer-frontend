@@ -122,6 +122,7 @@ table.details {
     }
     &:last-child td {
       border-bottom: none;
+      word-break: break-all;
     }
   }
   @include breakpoint("phablet", max) {

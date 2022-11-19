@@ -1,21 +1,18 @@
 import React, { Component } from "react";
 import { browserHistory, Link } from 'react-router';
 import cx from 'classnames';
-
 import { blocksService } from '../common/services/block';
-import LinkButton from "../common/components/link-button";
 import NotExist from '../common/components/not-exist';
 import { BlockStatus, TxnTypeText, TxnClasses } from '../common/constants';
 import { date, hash, prevBlock } from '../common/helpers/blocks';
 import { formatCoin, priceCoin } from '../common/helpers/utils';
-import { priceService } from '../common/services/price';
+
 import LoadingPanel from '../common/components/loading-panel';
 import { withTranslation } from "react-i18next";
 class BlocksExplorer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: this.props.route.backendAddress,
       block: null,
       totalBlocksNumber: undefined,
       errorType: null,
@@ -31,7 +28,7 @@ class BlocksExplorer extends Component {
   componentDidMount() {
     const { blockHeight } = this.props.params;
     this.getOneBlockByHeight(blockHeight);
-    this.getPrices();
+  
   }
   getOneBlockByHeight(height) {
     const { totalBlocksNumber } = this.state;
@@ -72,33 +69,7 @@ class BlocksExplorer extends Component {
       <div className="th-explorer__buttons--no-more">No More</div>
     )
   }
-  getPrices() {
-    priceService.getAllprices()
-      .then(res => {
-        const prices = _.get(res, 'data.body');
-        prices.forEach(info => {
-          switch (info._id) {
-            case 'PANDO':
-              this.setState({ price: { ...this.state.price, 'Pando': info.price } })
-              return;
-            case 'PTX':
-              this.setState({ price: { ...this.state.price, 'TFuel': info.price } })
-              return;
-            default:
-              return;
-          }
-        })
-      })
-      .catch(err => {
-
-      });
-    setTimeout(() => {
-      let { price } = this.state;
-      if (!price.Pando) {
-        this.getPrices();
-      }
-    }, 500000);
-  }
+ 
   render() {
     const { t } = this.props
     const { block, totalBlocksNumber, errorType, price } = this.state;
@@ -111,7 +82,7 @@ class BlocksExplorer extends Component {
       <div className="content block-details">
         <div class="explore-1 mb-5">
 
-          <div className="searchContainer">
+          {/* <div className="searchContainer">
             <input type="text" className="search-input nwe1" placeholder={`${t('SEARCH')}`} ref={input => this.searchInput = input} onKeyPress={e => this.handleEnterKey(e)} />
             <div className="search-select">
               <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -124,7 +95,7 @@ class BlocksExplorer extends Component {
 
             </div>
 
-          </div>
+          </div> */}
         </div>
         <div className="page-title blocks"><img src="../images/icons/Icon awesome-boxes.svg" className="mr-2" />{t(`BLOCK_DETAILS`)}</div>
         {errorType === 'error_not_found' &&
@@ -137,7 +108,7 @@ class BlocksExplorer extends Component {
               <LoadingPanel />
               :
               <div>
-                <div className="txt-de2">
+                <div className="txt-de2 table-responsive">
                   <table className="txn-info details">
                     <tbody className={cx({ 'cp': isCheckPoint })}>
                       <tr>

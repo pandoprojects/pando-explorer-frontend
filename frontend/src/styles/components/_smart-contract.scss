@@ -31,7 +31,7 @@
         border-top: 6px solid $color-input-text;
         position: absolute;
         right: 5px;
-        top: 12px;
+        top: 18px;
         pointer-events: none;
       }
       & select{
@@ -42,7 +42,7 @@
           border-color: $color-red;
         }
       } & select option{
-        color: black;
+        color: #fff;
       }
     }
   
@@ -73,6 +73,8 @@
         line-height: 15px;
         color: $color-white;
         font-size: 12px;
+        background: rgba(0, 0, 0, 0.5098039216) 0% 0% no-repeat padding-box;
+        box-shadow: inset -6px -6px 31px rgb(205 205 205 / 84%);
   
         bottom: calc(100% + 10px);
         left: 50%;
@@ -95,21 +97,27 @@
   }
   .code-buttons{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 0 20%;
     & div{
-      padding: 20px;
-      color: $color-input-text;
-      background: $color-blue;
+      padding: 14px 13px;
+      color: #ffffff;
+      background: #E643F1;
       border: none;
-      border-radius: .25rem;
-      font-weight: $weight-medium;
+      border-radius: 0.25rem;
+      font-weight: 500;
       cursor: pointer;
+      border-radius: 33px;
+      margin-right: 10px;
       &:hover{
         box-shadow: 0 4px 8px 0 rgba($color-blue, 0.2), 0 6px 20px 0 rgba($color-blue, 0.19);
+        background: #9e28a6 0% 0% no-repeat padding-box;
       }
       &.reset{
-        background: $color-light;
+        background: #2e2e2e 0% 0% no-repeat padding-box;
+        box-shadow: inset 0px 0px 22px #cdcdcd69;
+        // width: 120px;
+        text-align: center;
         &:hover{
           background-color: $color-input-background;
           box-shadow: 0 4px 8px 0 rgba($color-input-background, 0.2), 0 6px 20px 0 rgba($color-input-background, 0.19);

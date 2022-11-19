@@ -21,7 +21,6 @@ import {
   from,
 } from "../common/helpers/transactions";
 import { formatCoin, priceCoin, getHex } from "../common/helpers/utils";
-import { priceService } from "../common/services/price";
 import { transactionsService } from "../common/services/transaction";
 import NotExist from "../common/components/not-exist";
 import DetailsRow from "../common/components/details-row";
@@ -34,12 +33,11 @@ class TransactionExplorer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: this.props.route.backendAddress,
       transaction: null,
       totalTransactionsNumber: undefined,
       errorType: null,
       showRaw: false,
-      price: { Pando: 0, TFuel: 0 },
+      price: { Pando: 0, PTX: 0 },
       loading: true,
     };
   }
@@ -48,44 +46,14 @@ class TransactionExplorer extends Component {
       nextProps.params.transactionHash !== this.props.params.transactionHash
     ) {
       this.getOneTransactionByUuid(nextProps.params.transactionHash);
-      this.getPrices();
     }
   }
   componentDidMount() {
     const { transactionHash } = this.props.params;
     this.getOneTransactionByUuid(transactionHash.toLowerCase());
-    this.getPrices();
+
   }
-  getPrices() {
-    priceService
-      .getAllprices()
-      .then((res) => {
-        const prices = _.get(res, "data.body");
-        prices.forEach((info) => {
-          switch (info._id) {
-            case "PANDO":
-              this.setState({
-                price: { ...this.state.price, Pando: info.price },
-              });
-              return;
-            case "PTX":
-              this.setState({
-                price: { ...this.state.price, TFuel: info.price },
-              });
-              return;
-            default:
-              return;
-          }
-        });
-      })
-      .catch((err) => { });
-    setTimeout(() => {
-      let { price } = this.state;
-      if (!price.Pando || !price.TFuel) {
-        this.getPrices();
-      }
-    }, 500000);
-  }
+
   getOneTransactionByUuid(hash) {
     if (hash) {
       this.setState({ loading: true });
@@ -131,24 +99,8 @@ class TransactionExplorer extends Component {
     return (
       <div className="content transaction-details" style={{ textAlign: 'center' }}>
         {/* search section */}
-        <div class="explore-1 mb-5">
 
-          <div className="searchContainer">
-            <input type="text" className="search-input nwe1" placeholder={`${t('SEARCH')}`} ref={input => this.searchInput = input} onKeyPress={e => this.handleEnterKey(e)} />
-            <div className="search-select">
-              <i class="fa fa-angle-down" aria-hidden="true"></i>
-              <select ref={option => this.searchType = option} onChange={(e) => this.clearSearchBox()}  >
-
-                <option value="address">{t('ADDRESS')}</option>
-                <option value="block">{t('BLOCK_HEIGHT')}</option>
-                <option value="transaction">{t('TRANSACTION')}</option>
-              </select>
-
-            </div>
-
-          </div>
-        </div>
-        <h3> <img src="../images/Group 503.svg" alt="" srcset="" /> TRANSACTION DETAILS</h3>
+        <h3> <img src="../images/Group 503.svg" alt="" /> {t('TRANSACTION DETAILS')}</h3>
         <div className="page-title transactions">
           <BodyTag className={cx({ "show-modal": showRaw })} />
           {errorType && <NotExist />}
@@ -158,13 +110,13 @@ class TransactionExplorer extends Component {
                 <LoadingPanel />
               ) : (
                 <>
-                  <div className="txt-de2">
+                  <div className="txt-de2 table-responsive">
                     <table className="details txn-info table">
                       <thead>
                         <tr>
                           <th># {t(`HASH`)}</th>
                           <th>
-                           <span className="vilot"> {transaction.hash} </span>
+                            <span className="vilot tran56"> {transaction.hash} </span>
                           </th>
                         </tr>
                       </thead>
@@ -226,53 +178,53 @@ class TransactionExplorer extends Component {
                     </button>
                   </div>
                   {transaction.type === TxnTypes.COINBASE && (
-                    <Coinbase transaction={transaction} price={price} />
+                    <Coinbase transaction={transaction} price={price} t={t} />
                   )}
 
                   {transaction.type === TxnTypes.SLASH && (
-                    <Slash transaction={transaction} />
+                    <Slash transaction={transaction} t={t} />
                   )}
 
                   {transaction.type === TxnTypes.TRANSFER && (
-                    <Send transaction={transaction} price={price} />
+                    <Send transaction={transaction} price={price} t={t} />
                   )}
 
                   {transaction.type === TxnTypes.RESERVE_FUND && (
-                    <ReserveFund transaction={transaction} price={price} />
+                    <ReserveFund transaction={transaction} price={price} t={t} />
                   )}
 
                   {
                     transaction.type === TxnTypes.RELEASE_FUND && (
-                      <ReserveFund transaction={transaction} price={price} />
+                      <ReleaseFund transaction={transaction} price={price} t={t} />
                     )
                     // <ReleaseFund transaction={transaction} price={price} />
                   }
 
                   {transaction.type === TxnTypes.SERVICE_PAYMENT && (
-                    <ServicePayment transaction={transaction} price={price} />
+                    <ServicePayment transaction={transaction} price={price} t={t} />
                   )}
 
                   {transaction.type === TxnTypes.SPLIT_CONTRACT && (
-                    <SplitContract transaction={transaction} price={price} />
+                    <SplitContract transaction={transaction} price={price} t={t} />
                   )}
 
                   {transaction.type === TxnTypes.SMART_CONTRACT && (
-                    <SmartContract transaction={transaction} price={price} />
+                    <SmartContract transaction={transaction} price={price} t={t} />
                   )}
 
                   {transaction.type === TxnTypes.WITHDRAW_STAKE && (
-                    <WithdrawStake transaction={transaction} price={price} />
+                    <WithdrawStake transaction={transaction} price={price} t={t} />
                   )}
 
                   {transaction.type === TxnTypes.DEPOSIT_STAKE && (
-                    <DepositStake transaction={transaction} price={price} />
+                    <DepositStake transaction={transaction} price={price} t={t} />
                   )}
 
                   {transaction.type === TxnTypes.DEPOSIT_STAKE_TX_V2 && (
-                    <DepositStake transaction={transaction} price={price} />
+                    <DepositStake transaction={transaction} price={price} t={t} />
                   )}
                   {transaction.type === TxnTypes.DEPOSIT_STAKE_TX_V3 && (
-                    <DepositStake transaction={transaction} price={price} />
+                    <DepositStake transaction={transaction} price={price} t={t} />
                   )}
 
                   {showRaw && (
@@ -291,7 +243,7 @@ class TransactionExplorer extends Component {
     );
   }
 }
-export default withTranslation()(TransactionExplorer);
+
 
 function _getAddressShortHash(address) {
   return address.substring(12) + "...";
@@ -302,6 +254,9 @@ function _renderIds(ids) {
 }
 
 const Amount = ({ coins, price }) => {
+  let newObj = Object.fromEntries(
+    Object.entries(coins).map(([k, v]) => [k.toLowerCase(), v])
+  );
   return (
     <React.Fragment>
       {/* <div className="currency pando">
@@ -310,8 +265,8 @@ const Amount = ({ coins, price }) => {
         <div></div>
       </div> */}
       <div className="currency PTX">
-        {formatCoin(coins?.ptxwei)} PTX
-        <div className="price">{`\$${priceCoin(coins?.ptxwei)}`}</div>
+        {formatCoin(newObj?.ptxwei)} PTX
+        <div className="price">{`\$${priceCoin(newObj?.ptxwei)}`}</div>
       </div>
     </React.Fragment>
   );
@@ -338,7 +293,10 @@ const calulateFee = (val) => {
   }
 };
 
-const Fee = ({ transaction }) => {
+const Fee = ({ transaction, t }) => {
+  transaction.data.fee = Object.fromEntries(
+    Object.entries(transaction.data.fee).map(([k, v]) => [k.toLowerCase(), v])
+);
   return (
     <span className="currency PTX">
       {calulateFee(fee(transaction)) + " PTX"}
@@ -346,7 +304,7 @@ const Fee = ({ transaction }) => {
   );
 };
 
-const CoinbaseOutput = ({ output, price }) => {
+const CoinbaseOutput = ({ output, price, t }) => {
   const isPhone = window.screen.width <= 560;
   const isSmallPhone = window.screen.width <= 320;
   const truncate = isPhone ? (isSmallPhone ? 10 : 15) : null;
@@ -360,54 +318,59 @@ const CoinbaseOutput = ({ output, price }) => {
   );
 };
 
-const ServicePayment = ({ transaction, price }) => {
+const ServicePayment = ({ transaction, price, t }) => {
   let { data } = transaction;
+
   return (
-    <table className="details txn-details">
-      <tbody>
-        <DetailsRow label="Fee" data={<Fee transaction={transaction} />} />
-        <DetailsRow
-          label="From Address"
-          data={<Address hash={data.source.address} />}
-        />
-        <DetailsRow
-          label="To Address"
-          data={<Address hash={data.target.address} />}
-        />
-        <DetailsRow
-          label="Amount"
-          data={<Amount coins={data.source.coins} price={price} />}
-        />
-        <DetailsRow label="Payment Sequence" data={data.payment_sequence} />
-        <DetailsRow label="Reserve Sequence" data={data.reserve_sequence} />
-        <DetailsRow label="Resource ID" data={data.resource_id} />
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="details txn-details">
+        <tbody>
+          <DetailsRow label={t(`Fee`)} data={<Fee transaction={transaction} />} />
+          <DetailsRow
+            label={t(`FROM`)}
+            data={<Address hash={data.source.address} />}
+          />
+          <DetailsRow
+            label={t(`TO`)}
+            data={<Address hash={data.target.address} />}
+          />
+          <DetailsRow
+            label={t(`Amount`)}
+            data={<Amount coins={data.source.coins} price={price} />}
+          />
+          <DetailsRow label="Payment Sequence" data={data.payment_sequence} />
+          <DetailsRow label="Reserve Sequence" data={data.reserve_sequence} />
+          <DetailsRow label="Resource ID" data={data.resource_id} />
+        </tbody>
+      </table>
+    </div>
   );
 };
 
-const ReserveFund = ({ transaction, price }) => {
+const ReserveFund = ({ transaction, price, t }) => {
   let { data } = transaction;
   return (
-    <table className="details txn-details">
-      <tbody>
-        <DetailsRow label="Fee" data={<Fee transaction={transaction} />} />
-        <DetailsRow
-          label="From Address"
-          data={<Address hash={data?.inputs[0]?.address} />}
-        />
-        <DetailsRow
-          label="Amount"
-          data={_.map(data.outputs, (output, i) => (
-            <CoinbaseOutput key={i} output={output} price={price} />
-          ))}
-        />
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="details txn-details">
+        <tbody>
+          <DetailsRow label={t(`Fee`)} data={<Fee transaction={transaction} />} />
+          <DetailsRow
+            label={t(`FROM`)}
+            data={<Address hash={data?.inputs[0]?.address} />}
+          />
+          <DetailsRow
+            label={t(`Amount`)}
+            data={_.map(data.outputs, (output, i) => (
+              <CoinbaseOutput key={i} output={output} price={price} />
+            ))}
+          />
+        </tbody>
+      </table>
+    </div>
   );
 };
 
-const ReleaseFund = ({ transaction }) => {
+const ReleaseFund = ({ transaction, t }) => {
   let { data } = transaction;
   return (
     <table className="details txn-details">
@@ -416,57 +379,59 @@ const ReleaseFund = ({ transaction }) => {
   );
 };
 
-const SplitContract = ({ transaction }) => {
+const SplitContract = ({ transaction, t }) => {
   let { data } = transaction;
   return (
-    <table className="details txn-details">
-      <tbody>
-        <DetailsRow label="Fee" data={<Fee transaction={transaction} />} />
-        <DetailsRow label="Duration" data={data.duration} />
-        <DetailsRow
-          label="Initiator Address"
-          data={<Address hash={data.initiator.address} />}
-        />
-        <DetailsRow label="Resource Id" data={data.resource_id} />
-        <DetailsRow
-          label="Splits"
-          data={
-            <div className="th-tx-text__split">
-              {data.splits.map((split) => (
-                <span key={split.Address}>
-                  {"Address: " + split.Address + "  " + split.Percentage + "%"}
-                </span>
-              ))}
-            </div>
-          }
-        />
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="details txn-details">
+        <tbody>
+          <DetailsRow label={t(`Fee`)} data={<Fee transaction={transaction} />} />
+          <DetailsRow label={t(`Duration`)} data={data.duration} />
+          <DetailsRow
+            label={t(`Initiator Address`)}
+            data={<Address hash={data.initiator.address} />}
+          />
+          <DetailsRow label={t(`Resource Id`)} data={data.resource_id} />
+          <DetailsRow
+            label={t(`Splits`)}
+            data={
+              <div className="th-tx-text__split">
+                {data.splits.map((split) => (
+                  <span key={split.Address}>
+                    {"Address: " + split.Address + "  " + split.Percentage + "%"}
+                  </span>
+                ))}
+              </div>
+            }
+          />
+        </tbody>
+      </table>
+    </div>
   );
 };
 
-const Send = ({ transaction, price }) => {
+const Send = ({ transaction, price, t }) => {
   let { data } = transaction;
   return (
-    <div className="txt-de2">
+    <div className="txt-de2 table-responsive">
       <table className="details txn-details">
         <tbody>
-          <DetailsRow label="Fee" data={<Fee transaction={transaction} />} />
+          <DetailsRow label={t(`Fee`)} data={<Fee transaction={transaction} />} />
           {data.inputs.length > 1 ? (
             <DetailsRow
-              label="From Address"
+              label={t(`FROM`)}
               data={_.map(data.intputs, (input, i) => (
                 <CoinbaseOutput key={i} output={input} price={price} />
               ))}
             />
           ) : (
             <DetailsRow
-              label="From Address"
+              label={t(`FROM`)}
               data={<Address hash={data.inputs[0].address} />}
             />
           )}
           <DetailsRow
-            label="Amount"
+            label={t(`Amount`)}
             data={_.map(data.outputs, (output, i) => (
               <CoinbaseOutput key={i} output={output} price={price} />
             ))}
@@ -477,43 +442,45 @@ const Send = ({ transaction, price }) => {
   );
 };
 
-const Slash = ({ transaction }) => {
+const Slash = ({ transaction, t }) => {
   let { data } = transaction;
   return (
-    <table className="details txn-details">
-      <tbody>
-        <DetailsRow
-          label="Proposer Address"
-          data={<Address hash={data.proposer.address} />}
-        />
-        <DetailsRow label="Reserved Sequence" data={data.reserved_sequence} />
-        <DetailsRow
-          label="Slash Proof"
-          data={data.slash_proof.substring(0, 12) + "......."}
-        />
-        <DetailsRow
-          label="Slashed Address"
-          data={<Address hash={data.slashed_address} />}
-        />
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="details txn-details">
+        <tbody>
+          <DetailsRow
+            label={t(`Proposer Address`)}
+            data={<Address hash={data.proposer.address} />}
+          />
+          <DetailsRow label={t(`Reserved Sequence`)} data={data.reserved_sequence} />
+          <DetailsRow
+            label={t(`Slash Proof`)}
+            data={data.slash_proof.substring(0, 12) + "......."}
+          />
+          <DetailsRow
+            label={t(`Slashed Address`)}
+            data={<Address hash={data.slashed_address} />}
+          />
+        </tbody>
+      </table>
+    </div>
   );
 };
 
-const Coinbase = ({ transaction, price }) => {
+const Coinbase = ({ transaction, price, t }) => {
   let { data } = transaction;
   return (
-    <div className="txt-de2">
+    <div className="txt-de2 table-responsive">
       <table className="details txn-details 7">
         <tbody>
           <DetailsRow
-            label="Proposer"
+            label={t(`Proposer`)}
             data={<Address hash={_.get(data, "proposer.address")} />}
           ></DetailsRow>
           <DetailsRow
-            label="Amount"
+            label={t(`Amount`)}
             data={_.map(data.outputs, (output, i) => (
-              <CoinbaseOutput key={i} output={output} price={price} />
+              <CoinbaseOutput key={i} output={output} price={price} t={t} />
             ))}
           />
         </tbody>
@@ -522,84 +489,92 @@ const Coinbase = ({ transaction, price }) => {
   );
 };
 
-const WithdrawStake = ({ transaction, price }) => {
+const WithdrawStake = ({ transaction, price, t }) => {
   let { data } = transaction;
   return (
-    <table className="details txn-details">
-      <tbody>
-        <DetailsRow label="Fee" data={<Fee transaction={transaction} />} />
-        <DetailsRow
-          label="Stake Addr."
-          data={<Address hash={_.get(data, "holder.address")} />}
-        />
-        <DetailsRow
-          label="Stake"
-          data={<Amount coins={_.get(data, "source.coins")} price={price} />}
-        />
-        <DetailsRow label="Purpose" data={TxnPurpose[_.get(data, "purpose")]} />
-        <DetailsRow
-          label="Staker"
-          data={<Address hash={_.get(data, "source.address")} />}
-        />
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="details txn-details">
+        <tbody>
+          <DetailsRow label={t(`Fee`)} data={<Fee transaction={transaction} />} />
+          <DetailsRow
+            label={t(`Stake Addr`)}
+            data={<Address hash={_.get(data, "holder.address")} />}
+          />
+          <DetailsRow
+            label={t(`STAKES`)}
+            data={<Amount coins={_.get(data, "source.coins")} price={price} />}
+          />
+          <DetailsRow label={t(`Purpose`)} data={TxnPurpose[_.get(data, "purpose")]} />
+          <DetailsRow
+            label={t(`Staker`)}
+            data={<Address hash={_.get(data, "source.address")} />}
+          />
+        </tbody>
+      </table>
+    </div>
   );
 };
 
-const DepositStake = ({ transaction, price }) => {
+const DepositStake = ({ transaction, price, t }) => {
   let { data } = transaction;
   return (
-    <table className="details txn-details">
-      <tbody>
-        <DetailsRow label="Fee" data={<Fee transaction={transaction} />} />
-        <DetailsRow
-          label="Stake Addr."
-          data={<Address hash={_.get(data, "holder.address")} />}
-        />
-        <DetailsRow
-          label="Stake"
-          data={<Amount coins={_.get(data, "source.coins")} price={price} />}
-        />
-        <DetailsRow label="Purpose" data={TxnPurpose[_.get(data, "purpose")]} />
-        <DetailsRow
-          label="Staker"
-          data={<Address hash={_.get(data, "source.address")} />}
-        />
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="details txn-details">
+        <tbody>
+          <DetailsRow label={t(`Fee`)} data={<Fee transaction={transaction} />} />
+          <DetailsRow
+            label={t(`Stake Addr`)}
+            data={<Address hash={_.get(data, "holder.address")} />}
+          />
+          <DetailsRow
+            label={t(`STAKES`)}
+            data={<Amount coins={_.get(data, "source.coins")} price={price} />}
+          />
+          <DetailsRow label={t(`Purpose`)} data={TxnPurpose[_.get(data, "purpose")]} />
+          <DetailsRow
+            label={t(`Staker`)}
+            data={<Address hash={_.get(data, "source.address")} />}
+          />
+        </tbody>
+      </table>
+    </div>
   );
 };
 
-const SmartContract = ({ transaction }) => {
+const SmartContract = ({ transaction, t }) => {
   let { data, receipt } = transaction;
   return (
-    <table className="details txn-details">
-      <tbody>
-        <DetailsRow
-          label="From Addr."
-          data={<Address hash={_.get(data, "from.address")} />}
-        />
-        <DetailsRow
-          label="To Addr."
-          data={<Address hash={_.get(data, "to.address")} />}
-        />
-        <DetailsRow
-          label="CONTRACT ADDRESS"
-          data={<Address hash={_.get(receipt, "ContractAddress")} />}
-        />
-        <DetailsRow label="TOKENS TRANSFERRED" data={`From: ${_truncate(data.from.address, { length: 20 })} To: ${_truncate(data.to.address, { length: 20 })}`} />
-        <DetailsRow label="Gas Limit" data={data.gas_limit} />
-        <DetailsRow label="Gas Used" data={receipt.GasUsed} />
-        <DetailsRow
-          label="Gas Price"
-          data={
-            <span className="currency PTX">
-              {gasPrice(transaction) * 1000000000000000000 + " PTX"}
-            </span>
-          }
-        />
-        <DetailsRow label="Data" data={getHex(data.data)} />
-      </tbody>
-    </table>
+    <div className="txt-de2 smrt54 table-responsive">
+      <table className="details txn-details">
+        <tbody>
+          <DetailsRow
+            label={t(`FROM`)}
+            data={<Address hash={_.get(data, "from.address")} />}
+          />
+          <DetailsRow
+            label={t(`TO`)}
+            data={<Address hash={_.get(data, "to.address")} />}
+          />
+          <DetailsRow
+            label={t(`CONTRACT ADDRESS`)}
+            data={<Address hash={_.get(receipt, "ContractAddress")} />}
+          />
+          <DetailsRow label={t(`TOKENS TRANSFERRED`)} data={`From: ${_truncate(data.from.address, { length: 20 })} To: ${_truncate(data.to.address, { length: 20 })}`} />
+          <DetailsRow label={t(`Gas Limit`)} data={data.gas_limit} />
+          <DetailsRow label={t(`Gas Used`)} data={receipt.GasUsed} />
+          <DetailsRow
+            label={t(`Gas Price`)}
+            data={
+              <span className="currency PTX">
+                {gasPrice(transaction) * 1000000000000000000 + " Wei PTX"}
+              </span>
+            }
+          />
+          <DetailsRow label={t(`DATA`)} data={getHex(data.data)} />
+        </tbody>
+      </table>
+    </div>
   );
 };
+
+export default withTranslation()(TransactionExplorer);

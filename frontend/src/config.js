@@ -7,8 +7,8 @@ module.exports = {
         host: '', //socket url
         port: ''
     },
-    network:'Testnet',
+    network:'Privatenet',
     version: '2.0',
-    redirectionUrl:'pandoproject.org',
+    redirectionUrl:'',
     downloadurl:''
 }

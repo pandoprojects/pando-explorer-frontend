@@ -52,10 +52,10 @@
     .block-txn {
       .txn-type{
         &:before{ display: none }
-        font-size: 0.675rem;
+        font-size: 14px
       }
       .hash{
-        font-size: 0.675rem;
+        font-size: 14px;
       }
     }
   }

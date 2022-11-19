@@ -6,6 +6,15 @@ import { GWEI } from '../constants';
 
 export function averageFee(block) {
   BigNumber.set({ DECIMAL_PLACES: 1 });
+
+  for (let i of block.txs) {
+    if (i.raw) {
+      i.raw.fee = Object.fromEntries(
+        Object.entries(i.raw.fee).map(([k, v]) => [k.toLowerCase(), v])
+      );
+    }
+  }
+
   return _.reduce(block.txs, (bn, t) => bn.plus(new BigNumber(_.get(t, 'raw.fee.ptxwei', 0))), new BigNumber(0))
     .dividedBy(block.num_txs)
     .dividedBy(GWEI)

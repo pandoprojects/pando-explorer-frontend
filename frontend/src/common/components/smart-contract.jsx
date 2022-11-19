@@ -4,8 +4,10 @@ import SmartContractCode from './smart-contract-code';
 import ReadContract from './read-contract';
 import { smartContractService } from '../services/smartContract';
 import get from 'lodash/get';
+import { withTranslation } from "react-i18next";
 
-export default class SmartContract extends React.PureComponent {
+
+class SmartContract extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -32,7 +34,7 @@ export default class SmartContract extends React.PureComponent {
     smartContractService.getOneByAddress(address)
       .then(res => {
         switch (res.data.type) {
-          case 'smart_contract':
+          case "smart_contract":
             const smartContract = get(res, 'data.body')
             const isVerified = get(smartContract, 'verification_date')
             const hasSourceCode = get(smartContract, 'source_code')
@@ -83,16 +85,18 @@ export default class SmartContract extends React.PureComponent {
     const { address } = this.props;
     const { smartContract, isVerified, isLoading, isReleasesReady, tabIndex } = this.state;
     const abi = get(smartContract, 'abi');
+    const { t } = this.props;
     return (
       <React.Fragment>
         {/* <div className='actions'>
           <div className="title">Contract</div>
         </div> */}
-        <Tabs className="theta-tabs" selectedIndex={tabIndex} onSelect={this.setTabIndex}>
+        <Tabs className="pando-tabs" selectedIndex={tabIndex} onSelect={this.setTabIndex}>
           <TabList>
-            <Tab>Code</Tab>
-            <Tab disabled={!isVerified}>Read Contract</Tab>
-            <Tab disabled>Write Contract</Tab>
+          
+            <Tab>{t(`CODE`)}</Tab>
+            <Tab disabled={!isVerified}>{t(`READ CONTRACT`)}</Tab>
+            <Tab disabled>{t(`WRITE CONTRACT`)}</Tab>
           </TabList>
 
           <TabPanel>
@@ -103,10 +107,13 @@ export default class SmartContract extends React.PureComponent {
             {abi && <ReadContract abi={abi.filter(this.isReadFunction)} address={address} />}
           </TabPanel>
           <TabPanel>
-            <h2>Write Contract</h2>
+            <h2>{t(`WRITE CONTRACT`)}</h2>
           </TabPanel>
         </Tabs>
       </React.Fragment>
     );
   }
 }
+
+export default withTranslation()(SmartContract)
+

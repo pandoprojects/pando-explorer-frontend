@@ -14,8 +14,8 @@
   .customtansaciton
   {
     .active{
-    background: #E643F1 0% 0% no-repeat padding-box;
-    box-shadow: inset 0px 0px 27px #0000005e, 0px 3px 6px #00000029;
+    background: rgb(0 105 187 / 84%) 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 0px 15px rgb(205 205 205 / 47%);
     opacity: 1;
     color: #fff;
     border: 0;
@@ -23,6 +23,7 @@
     padding: 10px;
     border-radius: 4px;
     margin-right: 5px;
+    margin-bottom: 10px;
     }
   }
   .actions {
@@ -99,6 +100,7 @@
         background: transparent linear-gradient(180deg, #1d252d, #4d5d6d) 0 0 no-repeat padding-box !important;
         border-right: 1px solid $color-font-light;
         border-bottom: 1px solid $color-font-light;
+        display: none;
       }
     }
     .download {

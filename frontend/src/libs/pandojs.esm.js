@@ -432,7 +432,7 @@ class DepositStakeTx extends StakeTx {
 
         let encodedChainID = RLP.encode(Bytes.fromString(chainID));
         let encodedTxType = RLP.encode(Bytes.fromNumber(this.getType()));
-        console.log("encodedTxType 1-- ", this.getType(), encodedTxType);
+   
         let encodedTx = RLP.encode(this.rlpInput());
         let payload = encodedChainID + encodedTxType.slice(2) + encodedTx.slice(2);
 

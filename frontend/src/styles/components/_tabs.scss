@@ -1,4 +1,4 @@
-.theta-tabs {
+.pando-tabs {
   width: 100%;
   
   .react-tabs{
@@ -31,9 +31,18 @@
       }
       .code-area{
         height: 350px;
+        background: rgba(0, 0, 0, 0.5098039216) 0% 0% no-repeat padding-box;
+        box-shadow: inset -6px -6px 31px rgb(205 205 205 / 84%);
+        padding: 20px;
+        font-size: 16px;
+        border-radius: 15px;
       }
       .abi-area{
-        height: 100px;
+        background: rgba(0, 0, 0, 0.5098039216) 0% 0% no-repeat padding-box;
+        box-shadow: inset -6px -6px 31px rgb(205 205 205 / 84%);
+        padding: 20px;
+        font-size: 16px;
+        border-radius: 15px;
       }
     }
   }

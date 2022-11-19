@@ -4,13 +4,11 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 import get from 'lodash/get';
 import cx from 'classnames';
-
 import { formatCoin, priceCoin, getPando } from '../common/helpers/utils';
 import { CurrencyLabels } from '../common/constants';
 import { accountService } from '../common/services/account';
 import { transactionsService } from '../common/services/transaction';
 import { stakeService } from '../common/services/stake';
-import { priceService } from '../common/services/price';
 import TransactionTable from "../common/components/transactions-table";
 import TokenTxsTable from "../common/components/token-txs-table";
 import Pagination from "../common/components/pagination";
@@ -19,7 +17,6 @@ import DetailsRow from '../common/components/details-row';
 import LoadingPanel from '../common/components/loading-panel';
 import StakeTxsTable from "../common/components/stake-txs";
 import SmartContract from '../common/components/smart-contract';
-import RametronTransactionTable from "../common/components/rametron-transactions-table";
 import { withTranslation } from "react-i18next";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { tokenService } from "../common/services/token";
@@ -60,7 +57,7 @@ class AccountDetails extends Component {
       overallBalance: 0,
       totalRametronStake: 0,
       type: [],
-      actgivetabs:'coinbase'
+      actgivetabs: 'coinbase'
 
       // rameSourceTxs: null,
     };
@@ -104,7 +101,8 @@ class AccountDetails extends Component {
         hasToken: false,
         hasPNC20: false,
         hasPNC721: false,
-        // tokenBalance: INITIAL_TOKEN_BALANCE // to fetch the token balance
+        actgivetabs: 'coinbase'
+
       })
       this.fetchData(this.props.params.accountAddress);
     }
@@ -153,27 +151,22 @@ class AccountDetails extends Component {
     this.getOneAccountByAddress(address);
     this.getTransactionsByAddress(address);
     this.getStakeTransactions(address);
-    // this.getRametronStakeTransactions(address);
     this.overallBalance(address)
-    // this.rameOnlyTotalStake(address)
-    // this.getPrices();
     this.getTokenTransactionsNumber(address)
-    // this.rameSourceTxs(address)
+
   }
 
-  // rameSourceTxs(address) {
-  //   stakeService.rameSourceTxs(address).then((res) => {
-  //     this.setState({ rameSourceTxs: res.data })
-  //   })
-  // }
 
   overallBalance(address) {
     this.setState({ loading_txns1: true });
     stakeService.overallBalance(address).then((res) => {
 
       if (res.body && res.body.balance) {
-        if (res.body.balance.ptxwei > 0) {
-          this.setState({ overallBalance: formatCoin(res.body.balance.ptxwei) })
+        let newObj = Object.fromEntries(
+          Object.entries(res.body.balance).map(([k, v]) => [k.toLowerCase(), v])
+      );
+        if (newObj.ptxwei > 0) {
+          this.setState({ overallBalance: formatCoin(newObj.ptxwei) })
         }
         else {
           this.setState({ overallBalance: 0 })
@@ -216,7 +209,7 @@ class AccountDetails extends Component {
     }
     this.setState({ loading_txns: true });
     this.setState({ hasOtherTxs: false, currentPage: 1, totalPages: null, transactions: [] })
-    console.log(address, page, types)
+
     transactionsService.getTransactionsByAddress(address, page, types)
       .then(res => {
         const txs = _.get(res, 'data.body');
@@ -235,7 +228,7 @@ class AccountDetails extends Component {
         } else {
           this.setState({ loading_txns: false });
           this.setState({ hasOtherTxs: false })
-          // this.handleToggleHideTxn();
+
         }
 
       }
@@ -252,7 +245,7 @@ class AccountDetails extends Component {
     for (let name of tokenList) {
       tokenService.getTokenTxsNumByAccountAndType(address, name)
         .then(res => {
-          // if (!self._isMounted) return;
+
           const num = get(res, 'data.body.total_number');
           if (num > 0) {
             if (name === 'PNC-721') {
@@ -353,7 +346,7 @@ class AccountDetails extends Component {
           var json = JSON.stringify(res.data.body);
           var csv = convertToCSV(json);
           var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-          // var blob = new Blob([json], { type: "application/json" });
+          // 
           var url = URL.createObjectURL(blob);
           this.download.current.download = 'transactions.csv';
           this.download.current.href = url;
@@ -403,16 +396,18 @@ class AccountDetails extends Component {
     }
   }
   changeType(type) {
-    console.log(type)
-    this.setState({actgivetabs:type})
+    if (type == undefined || type == null) {
+      type = this.state.actgivetabs
+    }
+    this.setState({ actgivetabs: type })
     if (type == 'coinbase') {
       this.getTransactionsByAddress(this.state.account.address, 1, ["0"])
     }
     else if (type == 'transfer') {
-      this.getTransactionsByAddress(this.state.account.address, 1, ["2","5"])
+      this.getTransactionsByAddress(this.state.account.address, 1, ["2", "5"])
     }
     else if (type == 'stake') {
-      this.getTransactionsByAddress(this.state.account.address, 1, ["8","9","10","11"])
+      this.getTransactionsByAddress(this.state.account.address, 1, ["8", "9", "10", "11"])
 
     }
     else {
@@ -431,9 +426,9 @@ class AccountDetails extends Component {
 
   render() {
     const { t, truncate } = this.props
-    const { account, transactions, currentPage, totalPages, errorType, loading_txns, loading_txns1,
-      includeService, hasOtherTxs, hasStakes, holderTxs, hasDownloadTx, sourceTxs,
-      price, hasStartDateErr, hasEndDateErr, isDownloading, rametronStake, rameSourceTxs, hasPNC20, hasPNC721, hasToken, hasInternalTxs, actgivetabs } = this.state;
+    const { account, transactions, currentPage, totalPages, errorType, loading_txns,
+      hasStakes, holderTxs, hasDownloadTx, sourceTxs,
+      price, hasStartDateErr, hasEndDateErr, isDownloading, hasPNC20, hasPNC721, hasInternalTxs, actgivetabs } = this.state;
 
     return (
       <div className="content account">
@@ -442,24 +437,23 @@ class AccountDetails extends Component {
           < NotExist msg={t(`INVALID_ADDRESS`)} t={t} />}
         {account && !errorType &&
           <React.Fragment>
-            <div className="txt-de2">
-            <table className="details account-info">
-              <thead>
-                <tr key={1}>
-                  <th>{t(`ADDRESS`)}</th>
-                  <th><span className="vilot">{account.address}</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.loading_txns1 ? <span style={{ marginLeft: '10px' }}>{t(`LOADING`)}</span> :
-                  <DetailsRow label="Wallet Balance" data={`${this.state.overallBalance} PTX`} />
-                  // <DetailsRow label="Overall Balance" data={<Balance balance={account.balance} price={price} />} />
-                }
-
-
-                <DetailsRow label="Sequence" data={account.sequence} />
-              </tbody>
-            </table>
+            <div className="txt-de2 table-responsive">
+              <table className="details account-info">
+                <thead>
+                  <tr key={1}>
+                    <th>{t(`ADDRESS`)}</th>
+                    <th><span className="vilot">{account.address}</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.loading_txns1 ? <tr><th>{t(`WALLET BALANCE`)}</th><td>{t(`LOADING`)}</td></tr> :
+                    <DetailsRow label={t(`WALLET BALANCE`)} data={`${this.state.overallBalance} PTX`} />
+                  }
+                  {this.state.loading_txns1 ? <tr><th>{t(`SEQUENCE`)}</th><td>{t(`LOADING`)}</td></tr> :
+                    <DetailsRow label={t(`SEQUENCE`)} data={account.sequence} />
+                  }
+                </tbody>
+              </table>
             </div>
           </React.Fragment>}
         {hasStakes &&
@@ -471,95 +465,92 @@ class AccountDetails extends Component {
 
 
 
-       <div className="fhg54-tb">
-        <Tabs>
-          <TabList>
-            <Tab className="juh6"> <div className="title"><p><img src="../images/Group503.svg" />Transactions <button className="btn btn-success custom-btn trans-54" onClick={() => this.test(this.state.currentPageNumber)} title="Refresh" ><img src="/images/Layer 2.svg" alt="" /></button></p></div></Tab>
+        <div className="fhg54-tb">
+          <div className="juh6"> <div className="title"><p><img src="../images/Group503.svg" />{t(`TRANSACTIONS`)} <button className="btn custom-btn trans-54" onClick={() => this.changeType('')} title="Refresh" ><img src="/images/Layer 2.svg" alt="" /></button></p></div></div>
+          <Tabs>
+            <TabList>
+              <Tab >{t(`TRANSACTIONS`)}</Tab>
 
-            {account.code && account.code !== '0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470' &&
-              <Tab>Contract</Tab>
-            }
-            {hasInternalTxs && <Tab>Internal Txns</Tab>}
-            {hasPNC20 && <Tab>PNC-20 Token Txns</Tab>}
-            {hasPNC721 && <Tab>PNC-721 Token Txns</Tab>}
-          </TabList>
-           <TabPanel>
-
-
-            {
-              loading_txns ? <LoadingPanel className="fill" /> :
-              
-                <React.Fragment>
-
-
-
-                  
-                  <div>
-                  
-                    {loading_txns &&
-                      <LoadingPanel className="fill" />}
-                    <div className="customtansaciton">
-                      <button className={actgivetabs === 'coinbase' ? 'active' : ''} onClick={() => this.changeType('coinbase')}>Coinbase/Rewards</button>
-                      <button className={actgivetabs === 'transfer' ? 'active' : ''} onClick={() => this.changeType('transfer')}>Transfer</button>
-                      <button className={actgivetabs === 'stake' ? 'active' : ''} onClick={() => this.changeType('stake')}>Stake</button>
-                      <button className={actgivetabs === 'contract' ? 'active' : ''} onClick={() => this.changeType('contract')}>Smart Contract</button>
-                    </div>
-                    <div className="actions">
-                    {hasDownloadTx && <Popup trigger={<button className="download btn tx export">{t(`EXPORT_TRANSACTION_HISTORY`)}</button>} position="right center">
-                      <div className="popup-row header">{t(`CHOOSE_THE_TIME_PERIOD`)}</div>
-                      <div className="popup-row">
-                        <div className="popup-label">{t(`START_DATE`)}</div>
-                        <input className="popup-input" type="date" ref={input => this.startDate = input} onChange={() => this.handleInput('start')} max={today}></input>
-                      </div>
-                      <div className={cx("popup-row err-msg", { 'disable': !hasStartDateErr })}>{t(`INPUT_VALID_START_DATE`)}</div>
-                      <div className="popup-row">
-                        <div className="popup-label"> {t(`END_DATE`)}</div>
-                        <input className="popup-input" type="date" ref={input => this.endDate = input} onChange={() => this.handleInput('end')} max={today}></input>
-                      </div>
-                      <div className={cx("popup-row err-msg", { 'disable': !hasEndDateErr })}>{t(`INPUT_VALID_END_DATE`)}</div>
-                      <div className="popup-row buttons">
-                        <div className={cx("popup-reset", { disable: isDownloading })} onClick={this.resetInput}>{t(`RESET`)}</div>
-                        <div className={cx("popup-download export", { disable: isDownloading })} onClick={this.downloadTrasanctionHistory}>{t(`DOWNLOAD`)}</div>
-                        <div className={cx("popup-downloading", { disable: !isDownloading })}>{t(`DOWNLOADING`)}</div>
-                      </div>
-                    </Popup>}
-                    <a ref={this.download}></a>
-
-
-
-                  </div>
-                    <TransactionTable t={t} transactions={transactions} account={account} price={price} />
-                  </div>
-                  <Pagination
-                    size={'lg'}
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={this.handlePageChange}
-                    disabled={loading_txns} />
-                </React.Fragment>
-
-            }
-          </TabPanel>
-
-
-          {account.code &&
-
-
-            account.code !== '0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470' &&
+              {account.code && account.code !== '0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470' &&
+                <Tab>{t(`SMART CONTRACT`)}</Tab>
+              }
+              {hasInternalTxs && <Tab>Internal Txns</Tab>}
+              {hasPNC20 && <Tab>PNC-20 Token Txns</Tab>}
+              {hasPNC721 && <Tab>PNC-721 Token Txns</Tab>}
+            </TabList>
             <TabPanel>
-              <SmartContract address={account.address} handleHashScroll={this.handleHashScroll} urlHash={location.hash} />
+
+
+              {
+                loading_txns ? <LoadingPanel className="fill" /> :
+                  <React.Fragment>
+
+                    <div>
+
+                      {loading_txns &&
+                        <LoadingPanel className="fill" />}
+                      <div className="customtansaciton">
+                        <button className={actgivetabs === 'coinbase' ? 'active' : ''} onClick={() => this.changeType('coinbase')}>{t(`COINBASE REWARDS`)}</button>
+                        <button className={actgivetabs === 'transfer' ? 'active' : ''} onClick={() => this.changeType('transfer')}>{t(`TRANSFER`)}</button>
+                        <button className={actgivetabs === 'stake' ? 'active' : ''} onClick={() => this.changeType('stake')}>{t(`STAKES`)}</button>
+                        <button className={actgivetabs === 'contract' ? 'active' : ''} onClick={() => this.changeType('contract')}>{t(`SMART CONTRACT`)}</button>
+                      </div>
+                      <div className="actions">
+                        {hasDownloadTx && <Popup trigger={<button className="download btn tx export">{t(`EXPORT_TRANSACTION_HISTORY`)}</button>} position="right center">
+                          <div className="popup-row header">{t(`CHOOSE_THE_TIME_PERIOD`)}</div>
+                          <div className="popup-row">
+                            <div className="popup-label">{t(`START_DATE`)}</div>
+                            <input className="popup-input" type="date" ref={input => this.startDate = input} onChange={() => this.handleInput('start')} max={today}></input>
+                          </div>
+                          <div className={cx("popup-row err-msg", { 'disable': !hasStartDateErr })}>{t(`INPUT_VALID_START_DATE`)}</div>
+                          <div className="popup-row">
+                            <div className="popup-label"> {t(`END_DATE`)}</div>
+                            <input className="popup-input" type="date" ref={input => this.endDate = input} onChange={() => this.handleInput('end')} max={today}></input>
+                          </div>
+                          <div className={cx("popup-row err-msg", { 'disable': !hasEndDateErr })}>{t(`INPUT_VALID_END_DATE`)}</div>
+                          <div className="popup-row buttons">
+                            <div className={cx("popup-reset", { disable: isDownloading })} onClick={this.resetInput}>{t(`RESET`)}</div>
+                            <div className={cx("popup-download export", { disable: isDownloading })} onClick={this.downloadTrasanctionHistory}>{t(`DOWNLOAD`)}</div>
+                            <div className={cx("popup-downloading", { disable: !isDownloading })}>{t(`DOWNLOADING`)}</div>
+                          </div>
+                        </Popup>}
+                        <a ref={this.download}></a>
+
+
+
+                      </div>
+                      <TransactionTable t={t} transactions={transactions} account={account} price={price} />
+                    </div>
+                    <Pagination
+                      size={'lg'}
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={this.handlePageChange}
+                      disabled={loading_txns} />
+                  </React.Fragment>
+
+              }
             </TabPanel>
-          }
-          {hasInternalTxs && <TabPanel>
-            <TokenTab type="PTX" address={account.address} handleHashScroll={this.handleHashScroll} />
-          </TabPanel>}
-          {hasPNC20 && <TabPanel>
-            <TokenTab type="PNC-20" address={account.address} handleHashScroll={this.handleHashScroll} />
-          </TabPanel>}
-          {hasPNC721 && <TabPanel>
-            <TokenTab type="PNC-721" address={account.address} handleHashScroll={this.handleHashScroll} />
-          </TabPanel>}
-        </Tabs>
+
+
+            {account.code &&
+
+
+              account.code !== '0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470' &&
+              <TabPanel>
+                <SmartContract address={account.address} handleHashScroll={this.handleHashScroll} urlHash={location.hash} />
+              </TabPanel>
+            }
+            {hasInternalTxs && <TabPanel>
+              <TokenTab type="PTX" address={account.address} handleHashScroll={this.handleHashScroll} />
+            </TabPanel>}
+            {hasPNC20 && <TabPanel>
+              <TokenTab type="PNC-20" address={account.address} handleHashScroll={this.handleHashScroll} />
+            </TabPanel>}
+            {hasPNC721 && <TabPanel>
+              <TokenTab type="PNC-721" address={account.address} handleHashScroll={this.handleHashScroll} />
+            </TabPanel>}
+          </Tabs>
         </div>
       </div >);
   }
@@ -570,19 +561,14 @@ const Balance = ({ balance, price }) => {
     <div className="act balance">
       {_.map(balance, (v, k) => <div key={k} className={cx("currency", k)}>
         {`${calulateFee(v / 1000000000000000000)} ${CurrencyLabels[k] || k}`}
-        {/* <div className='price'>{`[\$${priceCoin(v, price[CurrencyLabels[k]])} USD]`}</div> */}
+
       </div>)}
     </div>)
 }
 
 const calulateFee = (val) => {
   return val.toFixed(4)
-  // if (val.includes('.')) {
-  //   let splitNum = val?.split('.');
-  //   return `${splitNum[0]}.${splitNum[1]?.slice(0, 4)}`;
-  // } else {
-  //   return val;
-  // }
+
 }
 
 const Address = ({ hash }) => {
@@ -621,8 +607,7 @@ const TokenTab = props => {
     );
     const domainNames = await tns.getDomainNames(uniqueAddresses);
     transactions.map((transaction) => {
-      // transaction.fromTns = transaction.from ? domainNames[transaction.from] : null;
-      // transaction.toTns = transaction.to ? domainNames[transaction.to] : null;
+
       transaction.fromTns = transaction.from;
       transaction.toTns = transaction.to;
     });

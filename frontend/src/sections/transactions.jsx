@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { browserHistory } from 'react-router';
-import socketClient from 'socket.io-client';
-
-import { getQueryParam } from '../common/helpers/utils';
 import { transactionsService } from '../common/services/transaction';
-import { priceService } from '../common/services/price';
 import Pagination from "../common/components/pagination";
 import TransactionTable from "../common/components/transactions-table";
 import LoadingPanel from '../common/components/loading-panel';
@@ -17,7 +13,6 @@ class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: this.props.route.backendAddress,
       transactions: [],
       currentPage: 1,
       totalPages: 0,
@@ -28,8 +23,7 @@ class Transactions extends Component {
 
   }
   componentWillUnmount() {
-    if (this.socket)
-      this.socket.disconnect();
+   
   }
   onSocketEvent(data) {
     let container = [];
@@ -53,16 +47,7 @@ class Transactions extends Component {
   componentDidMount() {
     const { currentPage } = this.state;
     this.fetchData(currentPage);
-
-    const { backendAddress } = this.state;
-    const { updateLive } = this.props;
-    // const { transactions } = this.state;
-    // Initial the socket
-    // if (backendAddress) {
-    //   this.socket = socketClient(backendAddress);
-    //   console.log('socket', this.socket);
-    //   this.socket.on('PUSH_TOP_TXS', this.onSocketEvent)
-    // }
+    
   }
   tesdt(currentPage) {
     this.setState({ loading: true });
@@ -78,9 +63,7 @@ class Transactions extends Component {
             loading: false,
           })
         }
-        // setTimeout(() => {
-        //   this.tesdt(this.state.currentPage)
-        // }, 10000)
+       
       })
       .catch(err => {
         this.setState({ loading: false });
@@ -107,13 +90,13 @@ class Transactions extends Component {
     const { transactions, currentPage, totalPages, loading, price } = this.state;
     return (
       <div className="content transactions">
-        <div className="page-title transactions" > <img src="./images/Group 503.svg" alt="" srcset="" /> {t(`TRANSACTIONS`)} <button className="btn btn-success custom-btn" onClick={() => this.fetchData(this.state.currentPage)} title="Refresh" ><img src="/images/Layer 2.svg" alt="" /></button></div>
+        <div className="page-title transactions" > <img src="./images/Group 503.svg" alt=""  /> {t(`TRANSACTIONS`)} <button className="btn custom-btn" onClick={() => this.fetchData(this.state.currentPage)} title="Refresh" ><img src="/images/Layer 2.svg" alt="" /></button></div>
         {this.state.loading ?
 
           <LoadingPanel />
           :
           <>
-            <TransactionTable backendAddress={this.state.backendAddress} updateLive={true} transactions={transactions} price={price} t={t} />
+            <TransactionTable transactions={transactions} price={price} t={t} />
             <Pagination
               size={'lg'}
               totalPages={totalPages}

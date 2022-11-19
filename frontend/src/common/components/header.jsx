@@ -5,7 +5,6 @@ import "../../index.css";
 import { lang, Languages } from "../constants";
 import config from "../../config";
 class Header extends Component {
-  //  isActive = false;
 
   constructor(props) {
     let activelink = "";
@@ -17,19 +16,28 @@ class Header extends Component {
       activelink = "stakes";
     } else if (window.location.pathname.includes("nodes")) {
       activelink = "nodes";
-    } else if (window.location.pathname.includes("node-status")) {
-      activelink = "node-status";
+    } else if (window.location.pathname.includes("public-node")) {
+      activelink = "public-node";
     } else {
       activelink = "";
+    }
+
+    let selectedLanguage = localStorage.getItem('currentLang')
+    let selectedLanguageValue = localStorage.getItem('currentLanguage')
+    
+    if(!(!!selectedLanguage)){
+        selectedLanguage = 'en'
+        selectedLanguageValue = 'English'
     }
     super(props);
     this.state = {
       addClass: false,
       lang: lang,
       languages: Languages,
-      selectedLanguage: "English",
+      selectedLanguage: selectedLanguageValue.toString(),
       activeLink: activelink,
     };
+    this.props.i18n.changeLanguage(selectedLanguage);
 
     this.handleHeader = this.handleHeader.bind(this);
   }
@@ -42,22 +50,23 @@ class Header extends Component {
     for (const key in this.state.languages) {
       if (key === lang) {
         this.setState({ selectedLanguage: lang });
+        localStorage.setItem('currentLang',this.state.languages[key])
+        localStorage.setItem('currentLanguage',lang)
         this.props.i18n.changeLanguage(this.state.languages[key]);
       }
     }
   };
 
   handleClick = (id) => {
+    $('.navbar-collapse').collapse('hide');
     this.setState({ activeLink: id });
   };
   render() {
-    const { links, activeLink } = this.state;
     const { t } = this.props;
     let boxClass = [""];
     if (this.state.addClass) {
       boxClass.push("active-nav");
     }
-    // this.activeLink = this.currentHeader()
     return (
       <div className="">
         <nav className="navbar navbar-expand-lg navbar-light pando-head fixed-top">
@@ -70,7 +79,7 @@ class Header extends Component {
               className="logo"
               src="/images/PANDOPROJECT LOGO.svg"
               height="50"
-              marginLeft="-91px"
+            
               alt=""
             />{" "}
           </Link>
@@ -96,6 +105,7 @@ class Header extends Component {
                     ? " nav-item active"
                     : "nav-item "
                 }
+              
               >
                 <Link
                   to="/blocks"
@@ -122,6 +132,7 @@ class Header extends Component {
                     ? " nav-item active"
                     : "nav-item "
                 }
+             
               >
                 <Link
                   to="/txs"
@@ -142,6 +153,7 @@ class Header extends Component {
                     ? " nav-item active"
                     : "nav-item "
                 }
+              
               >
                 <Link
                   to="/stakes"
@@ -168,6 +180,7 @@ class Header extends Component {
                     ? " nav-item active"
                     : "nav-item "
                 }
+              
               >
                 <Link
                   to="/nodes"
@@ -182,17 +195,18 @@ class Header extends Component {
                 </Link>
               </li>
               <li
-                onClick={() => this.handleClick("node-status")}
+                onClick={() => this.handleClick("public-node")}
                 className={
-                  this.state.activeLink === "node-status"
+                  this.state.activeLink === "public-node"
                     ? " nav-item active"
                     : "nav-item "
                 }
+              
               >
                 <Link
-                  to="/node-status"
+                  to="/public-node"
                   className="nav-downloadsitem"
-                  onClick={() => this.handleHeader("node-status")}
+                  onClick={() => this.handleHeader("public-node")}
                 >
                   <p>
                     <img src="/images/Path 176.svg" className="pub78 fr-d" />
@@ -201,7 +215,8 @@ class Header extends Component {
                   {t("PUBLIC NODE")}
                 </Link>
               </li>
-              <li className=" nav-item">
+              <li className=" nav-item" onClick={() => this.handleClick("")}>
+                
                 <a
                   href="https://pandoproject.org/announcements/ "
                   target="_blank"
@@ -215,26 +230,29 @@ class Header extends Component {
               </li>
             </ul>
             <form className="firu6 my-2 my-lg-0 do-bth">
-              <div className="test-nt">
-                <Link to={config.redirectionUrl}>
+              <div className="test-nt" >
+                <a href={config.redirectionUrl}
+                className="t4r" target="_blank">
                   {config.network}
                   <span> {config.version}</span>
                   
-                </Link>
+                </a>
               </div>
 
               {/* download button */}
-              <div className="rametronDownloads">
-                <Link to="/downloads" onClick={() => this.handleHeader}>
+              <Link to="/downloads"  onClick={() => this.handleClick("")}>
+              <div className="rametronDownloads" 
+           >
+              
                   <img
                     src="../images/Path 847.svg"
                     height="20"
                     style={{ marginRight: "11px", left: "2px" }}
                   />
                   {t("DOWNLOAD")}
-                </Link>
+              
               </div>
-
+              </Link>
               {/* Language dropdown */}
 
               <div className={boxClass.join(" ") + " nav-search"}>
@@ -242,7 +260,7 @@ class Header extends Component {
                   <select
                     onChange={(e) => this.changeLanguage(e.target.value)}
                     style={{ border: "none", height: "49" }}
-                  >
+                    value={this.state.selectedLanguage}>
                     {this.state.lang &&
                       this.state.lang.map((val, index) => (
                         <option className="dd-menu" value={val} key={index}>
@@ -255,7 +273,7 @@ class Header extends Component {
             </form>
           </div>
         </nav>
-       
+        
       </div>
     );
   }

@@ -175,7 +175,7 @@ h6 {
   font-size: 16px;
   line-height: inherit;
   border-radius: 10px;
-  width: auto;
+  width: 145px;
   cursor: pointer;
   font-weight: 400;
 }
@@ -246,7 +246,8 @@ img.hyfrg {
 .tbal-bl2, .tbal-ty2{
   border-radius:5px;
   // width: 50%;
-  padding: 25px;
+  // padding: 25px;
+  padding-bottom: 25px;
 }
 .tbal-bl2 table tbody, .tbal-ty2 table tbody{
   background: rgba(65, 65, 65, 0.6705882353) 0% 0% no-repeat padding-box;
@@ -367,12 +368,12 @@ p.ac-det{
   background: none;
 }
 .content.account .stakes .title p{
-  background: #00000082 0% 0% no-repeat padding-box;
-  box-shadow: inset -3px -3px 31px #e901f97d;
+  background: #000000 0% 0% no-repeat padding-box;
+  box-shadow: inset -3px -3px 31px #e643f1;
   opacity: 1;
   backdrop-filter: blur(30px);
   padding: 15px 30px;
-  border-radius: 33px;
+  border-radius: 10px;
   width: fit-content;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -412,6 +413,9 @@ table.data.txn-table2 thead tr {
 .fhg54-tb .react-tabs__tab-list, .fhg54-tb table.data.txn-table2 thead tr, .jh23 table.data.txn-table2 thead tr, .content.stakes .data.txn-table2 thead tr{
   border-bottom: 0px solid #aaa;
 }
+.react-tabs__tab:focus:after {
+  background: none!important;
+}
 .mnet6{
   margin-top: 30px;
 }
@@ -419,12 +423,13 @@ table.data.txn-table2 thead tr {
     border: 0;
     text-transform: uppercase;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 6px;
     margin-right: 5px;
-    background: #470C4B 0% 0% no-repeat padding-box;
-    box-shadow: inset 0px 0px 27px #0000005e, 0px 3px 6px #00000029;
-    color: #E643F1;
+    background: rgba(0, 105, 187, 0.35) 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 0px 15px rgb(205 205 205 / 47%);
+    color: #fff;
     width: 195px;
+    margin-bottom: 10px;
 }
 .juh6 p {
   background: #00000082 0% 0% no-repeat padding-box;
@@ -437,6 +442,7 @@ table.data.txn-table2 thead tr {
   text-transform: uppercase;
   padding: 25px;
   border-radius: 33px;
+  margin-left: 0;
 }
 .juh6 p img{
   width: 30px;
@@ -497,7 +503,7 @@ img.sifr-img {
 .content.transactions .mnet6{
   margin-top: 60px;
 }
-.content.transactions  .btn-success.custom-btn, .custom-btn.hom-ref {
+.content.transactions  .custom-btn, .custom-btn.hom-ref {
   border-radius: 100%;
   bottom: 0px;
   float: right;
@@ -517,6 +523,7 @@ img.sifr-img {
 
 .chart-container.hyg{
   box-shadow: none;
+  height: 350px;
   background: rgb(0 0 0 / 0%) 0% 0% no-repeat padding-box;
 }
 .hyg .doughnut{
@@ -668,11 +675,24 @@ text-align: left;
   text-transform: capitalize;
 }
 .rametron-section img {
-  width: 70%;
+  width: 80% !important;
 }
 .anounce-sec img {
   width: 60px;
 }
+// trim data in table
+
+table.data tbody td.overflow a {
+  width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.ip-btn-left .custom-ip-btn{
+  width: auto;
+}
+
 // public node page css
 
 .pub2 p{
@@ -720,7 +740,7 @@ table.data tbody tr{
 }
 table tr td {
   font-size: 16px;
-  // padding: 15px!important;
+// padding: 15px!important;
 }
 table.data tbody tr {
   border-bottom: 0px solid rgba(255, 255, 255, 0.1607843137)!important;
@@ -741,6 +761,39 @@ table.data tbody tr {
   height: 17px;
   margin-right: 8px;
   border-radius: 100%;
+}
+.Norecordfound {
+  background: rgba(65, 65, 65, 0.6) 0% 0% no-repeat padding-box;
+  padding: 10px;
+  text-align: center;
+}
+// Export ui css
+
+.content.account .actions .popup-content{
+  top: auto!important;
+  left: 0px!important;
+}
+.content.account .actions .popup-content .popup-arrow{
+  transform: rotate(229deg)!important;
+    top: -6px!important;
+    left: 0!important;
+    right: 0;
+    margin: 0 auto;
+}
+
+// Buttons active and foucs
+
+.custom-btn.cont-u8:not(:disabled):not(.disabled):active:focus{
+  box-shadow: inset 4px 0px 11px rgb(230 67 241 / 83%);
+  background-color: rgba(0, 0, 0, 0.5098039216) 0% 0% no-repeat padding-box;
+  border-color: inset 4px 0px 11px rgb(230 67 241 / 83%);
+}
+
+
+// table data contract
+.smrt54 table tbody tr:last-child td{
+  background-color: #343434b5;
+  padding: 20px;
 }
 
 /**
@@ -843,4 +896,154 @@ xmp {
 .token.dashboard.PTX {
   margin-top: 1rem;
 }
+.custom-btn.cont-u8{
+  left: auto !important;
+}
+table.data.block-table thead th p, table.data.txn-table2 thead th p
+{
+  padding: 5px 10px;
+  margin-bottom: 0px;
+  font-size: 12px;
+  margin-left: 0;
+  background:transparent;
+  box-shadow: none;
+  border-radius: 55px;
+  opacity: 1;
+  backdrop-filter: blur(0px);
+}
+.content.account .stakes .title p
+{
+  font-size: 14px;
+  padding: 15px 10px
+}
+table.data tbody td.overflow a
+{
+  width: auto;
+}
+.txt-de2
+{
+  padding: 0;
+  margin-top: 15px!important;
+}
+.chart-container.hyg
+{
+  height: auto;
+  margin-top: 0;
+}
+.blk9
+{
+  padding: 0;
+  margin-top: 15px;
+}
+
+table.data tbody td, table.data tbody th
+{
+  font-size: 12px;
+}
+.gsrf .ptx
+{
+  margin: 0;
+  margin-top: 8px;
+}
+.pub2 p
+{
+  padding: 15px;
+  font-size: 14px;
+  margin-left: 0;
+}
+.no-po h3
+{
+  padding-top: 20px;
+}
+.custom-btn.hom-ref
+{
+  top: 0
+}
+.download-page
+{
+  padding: 0!important
+}
+.download-page .h-100
+{
+  padding: 15px!important
+}
+.download-page-network .col-md-12
+{
+  padding: 0;
+}
+.download-page-network .box
+{
+  padding: 10px!important
+}
+.download-page-network .box h4{
+  font-size: 22px!important;
+}
+.download-page-network .box p
+{
+  font-size: 18px!important;
+  padding: 10px 0!important;
+  line-height: normal!important;
+  display: none;
+}
+.download-page-network .icon-flex
+{
+  display: block!important;
+}
+.download-page-network .icon-flex button
+{
+  text-align: center!important;
+  width: 100%;
+}
+.download-page .download-box .title
+{
+  font-size: 22px!important;
+}
+.download-page .download-box .des
+{
+  font-size: 16px!important;
+
+}
+.download-page .download-box button
+{
+  padding: 15px 30px!important;
+}
+.chart-container.homechart
+{
+  display: none;
+}
+.overview.tab-bg .row.w-100
+{
+  margin: 0
+}
+.tbal-bl2 .page-title.blocks,#app-content .content .page-title.ui7
+{
+  box-shadow: inset -6px -6px 31px rgb(205 205 205 / 84%);
+  opacity: 1;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 29px;
+}
+.hash.overflow a
+{
+  width: 150px!important;
+}
+.token.dashboard .column .detail
+{
+  margin: 19px 0px!important;
+}
+.search-input.nwe1
+{
+  width: 100%;
+}
+.searchContainer,.searchContainer select
+{
+  width: 100%!important;
+  display: block!important;
+  margin-top: 10px;
+}
+.do-bth .rametronDownloads
+{
+  margin-top: 10px;
+}
+
 }

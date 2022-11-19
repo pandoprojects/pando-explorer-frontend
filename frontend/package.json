@@ -5,14 +5,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "export PORT=9000 && node server.js",
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "main": "server.js",
   "engines": {
     "node": ">=7.5.0"
   },
   "author": "Pandolab Pte Ltd",
-  "license": "GNU General Public License v3.0",
+  "license": "MIT",
   "dependencies": {
     "@types/crypto-js": "^4.0.2",
     "axios": "^0.18.0",
@@ -51,8 +52,6 @@
     "reactstrap": "^6.2.0",
     "sass": "^1.49.7",
     "sass-loader": "^5.0.1",
-    "socket.io": "^2.1.1",
-    "socket.io-client": "^2.3.0",
     "stream": "npm:stream-browserify",
     "stream-browserify": "^3.0.0",
     "style-loader": "^0.13.1",

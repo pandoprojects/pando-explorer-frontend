@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
-import socketClient from 'socket.io-client';
 import { browserHistory } from 'react-router';
 import cx from 'classnames';
 
@@ -11,11 +10,10 @@ export default class BlockOverviewTable1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            backendAddress: this.props.backendAddress,
             blockHeight: 0,
             blocks: []
         };
-        // this.onSocketEvent = this.onSocketEvent.bind(this);
+        
     }
     static defaultProps = {
         includeDetails: true,
@@ -28,24 +26,12 @@ export default class BlockOverviewTable1 extends Component {
         return prevState;
     }
     componentDidMount() {
-        // const { backendAddress } = this.state;
-        // const { updateLive } = this.props;
-
-        // // Initial the socket
-        // if (updateLive && backendAddress) {
-        //     this.socket = socketClient(backendAddress);
-        //     this.socket.on('PUSH_TOP_BLOCKS', this.onSocketEvent)
-        // }
+      
     }
     componentWillUnmount() {
-        // if (this.socket)
-        //     this.socket.disconnect();
+       
     }
-    // onSocketEvent(data) {
-    //     if (data.type == 'block_list') {
-    //         this.setState({ blocks: data.body })
-    //     }
-    // }
+    
 
     handleRowClick = (height) => {
         browserHistory.push(`/blocks/${height}`);
@@ -54,6 +40,7 @@ export default class BlockOverviewTable1 extends Component {
     render() {
         const { className, includeDetails, truncate, t } = this.props;
         const { blocks } = this.state;
+      
         return (
             <table style={{backgrounColor:"red"}} className={cx("data block-table", className)}>
                 <thead>

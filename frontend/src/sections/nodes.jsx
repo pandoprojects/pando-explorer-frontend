@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
 import { stakeService } from '../common/services/stake';
-import PandoChart from '../common/components/chart';
-import { formatNumber, formatCurrency, sumCoin } from '../common/helpers/utils';
+import { sumCoin } from '../common/helpers/utils';
 import StakesTable from "../common/components/stakes-table";
 import LoadingPanel from '../common/components/loading-panel';
 
@@ -37,23 +36,17 @@ export default class Nodes extends Component {
 
                 let insit = []
                 for (let i of res.data.body) {
-                    // if (!(!!i.currentTime) || i.currentTime == 'dsdsds') {
+                   
                         let temp = { _id:i.type+'_'+i.holder, type: i.type, holder: i.holder, source: i.source, amount: i.amount, withdrawn: i.withdrawn, return_height: i.return_height }
-
                         insit.push(temp)
-                    // }
+                  
                 }
-                //   insit = insit.filter((thing, index, self) =>
-                //     index === self.findIndex((t) => (
-                //       t.type === thing.type && t.holder === thing.holder && thing.source === thing.source && thing.amount === thing.amount && thing.return_height === thing.return_height
-                //     ))
-                //   )
-
+               
                 const stakeList = insit
 
                 let sum = stakeList.reduce((sum, info) => { return sumCoin(sum, info.amount) }, 0);
                 let holderObj = stakeList.reduce((map, obj) => {
-                    //console.log(obj.holder)
+              
                     if (!map[obj._id]) {
                         map[obj._id] = {
                             type: obj.type,
@@ -96,8 +89,8 @@ export default class Nodes extends Component {
     }
 
     render() {
-        const { holders, percentage, sortedStakesByHolder, sortedStakesBySource, totalStaked, AllMetaHolder, AllZetaHolder, stakes } = this.state;
-        // console.log(this.state);
+        const {  sortedStakesByHolder, totalStaked } = this.state;
+      
 
         let isTablet = window.screen.width <= 768;
         const truncate = isTablet ? 10 : 20;
@@ -107,7 +100,7 @@ export default class Nodes extends Component {
                     <LoadingPanel />
                     :
                     <>
-                        <button className="btn btn-success custom-btn cont-u8" title="Refresh" onClick={() => this.getAllStakes()}  ><img src="/images/Layer 2.svg" alt="" /></button>
+                        {/* <button className="btn custom-btn cont-u8" title="Refresh" onClick={() => this.getAllStakes()}  ><img src="/images/Layer 2.svg" alt="" /></button> */}
 
                         <div className="table-container">
                             <StakesTable type='validators' stakes={sortedStakesByHolder} totalStaked={totalStaked} truncate={truncate} />

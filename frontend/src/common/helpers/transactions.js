@@ -8,7 +8,7 @@ import chain from 'lodash/chain';
 // import 
 import moment from 'moment';
 import { timeCoin } from './utils';
-import { TxnTypes, TxnTypeText, TxnStatus, WEI } from './../constants';
+import { TxnTypes, TxnTypeText, TxnStatus, WEI, TxnPurpose } from './../constants';
 BigNumber.config({ EXPONENTIAL_AT: 1e+9 });
 
 
@@ -38,10 +38,13 @@ export function from(txn, trunc = null, address = null, set = null) {
     } else if (txn.type === TxnTypes.STAKE_REWARD_DISTRIBUTION) {
       path = 'data.holder.address'
     } else {
+    
       let inputs = get(txn, 'data.inputs');
+      if(inputs){
       isSelf = inputs.some(input => {
         return input.address === address
       });
+    }
       path = 'data.inputs[0].address';
     }
     addr = isSelf ? address : get(txn, path);
@@ -76,9 +79,11 @@ export function to(txn, trunc = null, address = null) {
     path = 'data.beneficiary.address'
   } else {
     const outputs = get(txn, 'data.outputs');
+    if(outputs){
     isSelf = outputs.some(output => {
       return output.address === address;
     })
+  }
     path = 'data.outputs[0].address';
   }
   let addr = isSelf ? address : get(txn, path);
@@ -93,6 +98,10 @@ export function type(txn) {
     return status(txn);
   }
   return TxnTypeText[txn.type];
+}
+
+export function purpose(txn) {
+  return TxnPurpose[txn];
 }
 
 
@@ -165,7 +174,17 @@ export function coins(txn, account = null) {
   let outputs = null, inputs = null, index = 0;
   switch (txn.type) {
     case TxnTypes.COINBASE:
+
+
       outputs = get(txn, 'data.outputs');
+
+      for (let i of outputs) {
+
+        i.coins = Object.fromEntries(
+          Object.entries(i.coins).map(([k, v]) => [k.toLowerCase(), v])
+        );
+
+      }
       if (!account || txn.data.proposer.address === account.address) {
         coins = {
           'pandowei': totalCoinValue(get(txn, 'data.outputs'), 'pandowei').toFixed(),
@@ -173,12 +192,32 @@ export function coins(txn, account = null) {
         }
       } else if (outputs.some(output => { return output.address === account.address; })) {
         index = outputs.findIndex(e => e.address === account.address);
-        coins = outputs[index].coins;
+        // coins = outputs[index].coins;
+        coins = Object.fromEntries(
+          Object.entries(outputs[index].coins).map(([k, v]) => [k.toLowerCase(), v])
+        );
+
       }
       break;
     case TxnTypes.TRANSFER:
       outputs = get(txn, 'data.outputs');
       inputs = get(txn, 'data.inputs')
+      for(let i of outputs)
+      {
+
+       i.coins = Object.fromEntries(
+         Object.entries(i.coins).map(([k, v]) => [k.toLowerCase(), v])
+     );
+     
+      }
+      for(let i of inputs)
+      {
+
+       i.coins = Object.fromEntries(
+         Object.entries(i.coins).map(([k, v]) => [k.toLowerCase(), v])
+     );
+     
+      }
       if (!account) {
         coins = {
           'pandowei': totalCoinValue(get(txn, 'data.inputs'), 'pandowei').toFixed(),
@@ -189,7 +228,9 @@ export function coins(txn, account = null) {
         coins = inputs[index].coins;
       } else if (outputs.some(output => { return output.address === account.address; })) {
         index = outputs.findIndex(e => e.address === account.address);
-        coins = outputs[index].coins;
+        coins = Object.fromEntries(
+          Object.entries(outputs[index].coins).map(([k, v]) => [k.toLowerCase(), v])
+        );
       }
       break
     case TxnTypes.SLASH:
@@ -204,7 +245,9 @@ export function coins(txn, account = null) {
     case TxnTypes.DEPOSIT_STAKE:
     case TxnTypes.WITHDRAW_STAKE:
     case TxnTypes.DEPOSIT_STAKE_TX_V2:
+      if(txn.data.source){
       coins = txn.data.source.coins;
+    }
       break;
     default:
       break;

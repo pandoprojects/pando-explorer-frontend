@@ -3,7 +3,6 @@ import get from 'lodash/get';
 import map from 'lodash/map';
 import merge from 'lodash/merge';
 import { ethers } from "ethers";
-// import smartContractApi from 'common/services/smart-contract-api';
 import smartContractApi from '../services/smart-contract-api';
 import Pando from '../../libs/Pando';
 import PandoJS from '../../libs/pandojs.esm'
@@ -66,8 +65,7 @@ const FunctionUnit = (props) => {
       }));
     }
     catch (e) {
-      console.log('error occurs:', e)
-      //Stop loading and put the error message in the vm_error like it came fromm the blockchain.
+     
       setCallResult({ vm_error: e.message })
     }
   }

@@ -1,4 +1,4 @@
-// const BASE_URL = "https://api-wallet.thetatoken.org";
+// const BASE_URL = "https://api-wallet.pandotoken.org";
 const BASE_URL = "https://backend.pandoexplorer.uniblok.io/api";
 
 const DEFAULT_HEADERS = {

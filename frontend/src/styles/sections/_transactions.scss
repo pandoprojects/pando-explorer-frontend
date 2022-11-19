@@ -13,7 +13,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       &:before {
-        top: 6px;
+        top: 4px;
         margin-right: 0.75rem;
         border-radius: 100%;
       }
@@ -77,6 +77,9 @@
 
 .txn-type.coinbase:before {
   background-image: url("../../../public/images/icons/icon_coinbase@2x.png");
+  width: 22px;
+  height: 22px;
+  border-radius: 100%;
 }
 .txn-type.transfer:before {
   background-image: url("../../../public/images/icons/icon_send@2x.png");

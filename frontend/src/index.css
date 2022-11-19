@@ -77,19 +77,13 @@ body{
     font-family: 'helvetica_neueregular';
     cursor: pointer;
 }
+
 .dd-button:after {
-    content: '>';
-    color: #ffffff;
-    right: 11px;
-    height: 34px;
+    content: url(../public/images/icons/Icon-awesome-angle-down.svg);
+    right: 15px;
     padding: 15px 0px 0px 8px;
     position: absolute;
     pointer-events: none;
-    transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    font-weight: 800;
-    width: 10;
-    font-size: 16px;
 }
 .dd-button:hover {
     color: aqua
@@ -297,7 +291,7 @@ option {
     text-align: center;
 }
 .rametronDownloads a:hover{
-    color: #fff;
+    color: #fff !important;
 }
  
 .rametronDownloads li{
@@ -343,4 +337,33 @@ option {
 
 .tablenew{
 
+}
+
+
+.global-spinner
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99999;
+    text-align: center;
+    background: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.global-spinner.active
+{
+    display: none;
+}
+.copyw
+{
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+.copyw:hover{
+    transform: scale(1.1);
 }

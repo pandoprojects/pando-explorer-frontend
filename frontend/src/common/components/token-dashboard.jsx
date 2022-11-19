@@ -7,10 +7,8 @@ import { transactionsService } from '../../common/services/transaction';
 import { stakeService } from '../../common/services/stake';
 import { blocksService } from '../../common/services/block';
 import PandoChart from '../../common/components/chart';
-
 import BigNumber from 'bignumber.js';
-import { WEI } from '../../common/constants';
-
+import config from "../../config";
 
 export default class TokenDashboard extends React.PureComponent {
   constructor(props) {
@@ -36,9 +34,9 @@ export default class TokenDashboard extends React.PureComponent {
     this.handleSearch = this.handleSearch.bind(this);
   }
   componentDidMount() {
-    this.marketCap();
+    //this.marketCap();
     this.lbank();
-    this.circulatingSupply();
+   // this.circulatingSupply();
     this.getTransactionNumber();
     this.getBlockNumber();
     this.getTransactionHistory();
@@ -213,18 +211,18 @@ export default class TokenDashboard extends React.PureComponent {
     const { tokenInfo, type, t } = this.props;
     const icon = type + 'wei';
     const token = type.toUpperCase();
-   // console.log(type)
+  
     return (
       <React.Fragment>
 
         <div>
         
-            <div class="explore-1">
+            <div className="explore-1">
 
               <div className="searchContainer">
                 <input type="text" className="search-input nwe1" placeholder={`${t('SEARCH')}`} ref={input => this.searchInput = input} onKeyPress={e => this.handleEnterKey(e)} />
                 <div className="search-select">
-                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <i className="fa fa-angle-down" aria-hidden="true"></i>
                   <select ref={option => this.searchType = option} onChange={(e) => this.clearSearchBox()}  >
 
                     <option value="address">{t('ADDRESS')}</option>
@@ -251,7 +249,7 @@ export default class TokenDashboard extends React.PureComponent {
             </div>
             <div className="column">
               <Detail title= {`${t('METATRON STAKE')}`} value={formatCoin(this.state.metatronStake, 0)} />
-              <Detail title={`${t('CIRCULATING SUPPLY')}`}  value={formatNumber(this.state.CirculatingSupply)} />
+              <Detail title={`${t('CIRCULATING SUPPLY')}`}  value={formatNumber(config.circulatingSupply)} />
             </div>
             <div className="column">
 
@@ -261,16 +259,16 @@ export default class TokenDashboard extends React.PureComponent {
             </div>
             <div className="column">
               <Detail title={`${t('META_ZYTA_TOTAL_STAKED')}`} value={<StakedPercent staked={totalStaked} totalSupply={1500000000} />} />
-              <Detail title={`${t(`MARKET_CAP`)}`} value={formatCurrency(this.state.marketCap, 0)} />
+              <Detail title={`${t(`MARKET_CAP`)}`} value={formatCurrency((config.circulatingSupply*this.state.lbankPrince), 0)} />
 
             </div>
           </div>
         </div>
        
-            <div className={"chart-container "}>
+            <div className={"chart-container homechart "}>
               <div className="row">
                 <div className="col-md-12">
-                  <div style={{textAlign:'center',fontSize:'23px'}} className="title"> <img style={{paddingRight:'11px' }} src="./images/PTX LOGO.svg" alt="" srcset="" />{t('PTX_TRANSACTION_HISTORY')}</div>
+                  <div style={{textAlign:'center',fontSize:'23px'}} className="title"> <img style={{paddingRight:'11px' }} src="./images/PTX LOGO.svg" alt=""  />{t('PTX_TRANSACTION_HISTORY')}</div>
                   <PandoChart chartType={'line'} labels={txTs} data={txNumber} clickType={''} />
                 </div>
 
@@ -278,20 +276,20 @@ export default class TokenDashboard extends React.PureComponent {
 
 
             </div>
-            <div style={{textAlign:'center',fontSize:'23px',height:'396px'}} className={"chart-container mt-5"}  >
-            <img style={{paddingRight:'11px' }} src="./images/Icon ionic-ios-git-network.svg" alt="" srcset="" />
+            {/* <div style={{textAlign:'center',fontSize:'23px',height:'396px'}} className={"chart-container mt-5"}  >
+            <img style={{paddingRight:'11px' }} src="./images/Icon ionic-ios-git-network.svg" alt="" />
               <Link to="#">{`${t('RAMETRON NETWORKS')}`} </Link>
               <div className="row mt-2 ">
 
                 <div className="col-md-12">
-                  {/* <div className="title"></div> */}
+                 
                   
 
                 </div>
               </div>
 
 
-            </div>
+            </div> */}
 
          
 

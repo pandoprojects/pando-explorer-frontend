@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import { Link, withRouter } from 'react-router';
 import { blocksService } from '../common/services/block';
 import TransactionTable1 from "../common/components/transactions1-table";
-import BlocksTable from "../common/components/blocks-table";
 import BlocksTable1 from "../common/components/blocks-table1";
 import TokenDashboard from "../common/components/token-dashboard";
-import { priceService } from '../common/services/price';
 import { transactionsService } from '../common/services/transaction';
-import TransactionTable from "../common/components/transactions-table";
 import LoadingPanel from '../common/components/loading-panel';
 import { withTranslation } from "react-i18next";
 
@@ -20,7 +17,7 @@ class Dashboard extends Component {
     this.state = {
       pandoInfo: null,
       PTXInfo: null,
-      backendAddress: this.props.route.backendAddress,
+    
       blockHeight: 0,
       blockInfoList: [],
       currentPageNumber: 1,
@@ -98,7 +95,7 @@ class Dashboard extends Component {
   render() {
     const { t } = this.props;
     const { pandoInfo, PTXInfo, blockInfoList, transactions, currentPage, totalPages, loading, price } = this.state;
-    const { backendAddress } = this.props.route;
+
     return (
       <div className="content home1">
 
@@ -109,14 +106,14 @@ class Dashboard extends Component {
 
           <LoadingPanel /> :
           <div className="overview tab-bg mt-5">
-            <button className="btn btn-success custom-btn hom-ref" title="Refresh" onClick={() => this.tst()} ><img src="/images/Layer 2.svg" alt="" /></button>
+            <button className="btn custom-btn hom-ref" title="Refresh" onClick={() => this.tst()} ><img src="/images/Layer 2.svg" alt="" /></button>
             <div className="row w-100">
             <div className="col-lg-6 clo-md-12">
               <div className="table-responsive">
                 <div className="tbal-bl2">
                   <h2 className="page-title blocks"><Link to="/blocks"> <img style={{ paddingRight:'10px'}} src="./images/icons/Icon awesome-boxes.svg" alt="" />{t('BLOCKS')}</Link></h2>
                     <BlocksTable1
-                    backendAddress={this.state.backendAddress} updateLive={true} t={t}
+                     updateLive={true} t={t}
                     blocks={blockInfoList}
                     truncate={20} />
                     <div className="mor-lnk"><Link to="/blocks" className="more">{t('VIEW_MORE')}</Link></div>

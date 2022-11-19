@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { browserHistory, Link } from 'react-router';
-import socketClient from 'socket.io-client';
 import _ from 'lodash';
 import cx from 'classnames';
 
 import { truncateMiddle } from '../../common/helpers/utils';
 import { formatCoin, priceCoin } from '../../common/helpers/utils';
-import { from, to, fee, value, hash, age, date, type, coins } from '../../common/helpers/transactions';
+import { from, to, fee, value, hash, age, date, type, coins,purpose } from '../../common/helpers/transactions';
 import { TxnTypeText, TxnClasses } from '../../common/constants';
 
 
@@ -15,11 +14,11 @@ export default class TransactionTable1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            backendAddress: this.props.backendAddress,
+         
             transactions: [],
             account: null
         };
-        // this.onSocketEvent = this.onSocketEvent.bind(this);
+     
     }
     static defaultProps = {
         includeDetails: true,
@@ -32,25 +31,12 @@ export default class TransactionTable1 extends Component {
         return prevState;
     }
     componentDidMount() {
-        // const { backendAddress } = this.state;
-        // const { updateLive } = this.props;
-
-        // Initial the socket
-        // if (updateLive && backendAddress) {
-        //     this.socket = socketClient(backendAddress);
-        //     this.socket.on('PUSH_TOP_TXS', this.onSocketEvent)
-        // }
+     
     }
     componentWillUnmount() {
-        // if (this.socket)
-        //     this.socket.disconnect();
+       
     }
-    // onSocketEvent(data) {
-    //     if (data.type == 'transaction_list') {
-    //         let transactions = (data.body || []).sort((a, b) => b.number - a.number);
-    //         this.setState({ transactions })
-    //     }
-    // }
+    // 
 
     handleRowClick = (hash) => {
         browserHistory.push(`/txs/${hash}`);
@@ -59,23 +45,23 @@ export default class TransactionTable1 extends Component {
     render() {
         const { className, includeDetails, truncate, account, t } = this.props;
         const { transactions } = this.state;
-        // console.log(transactions)
         const address = account ? account.address : null;
         return (
+            <div className="table-responsive">
             <table className={cx("data txn-table2", className)}>
                 <thead style={{paddingBottom:'15px'}}>
                     <tr>
                         <th className="type"><p>{t('TYPE')}</p></th>
                         <th className="hash"><p>{t(`TXN_HASH`)}</p></th>
-                        {/* {includeDetails &&
+                        {includeDetails &&
                             <React.Fragment>
-                                <th className="block">Block</th>
-                                <th className="age">Age</th>
-                                <th className="from">From</th>
-                                <th className={cx("icon", { 'none': !account })}></th>
-                                <th className="to">To</th>
-                                <th className="value">Value</th>
-                            </React.Fragment>} */}
+                                {/* <th className="block">Block</th> */}
+                                {/* <th className="age">Age</th> */}
+                                <th className="from"><p>From</p></th>
+                                {/* <th className={cx("icon", { 'none': !account })}></th> */}
+                                {/* <th className="to">To</th> */}
+                                {/* <th className="value">Value</th> */}
+                            </React.Fragment>}
                     </tr>
                 </thead>
                 <tbody>
@@ -83,35 +69,40 @@ export default class TransactionTable1 extends Component {
                         let source = null;
                         source = !account ? 'none' : account.address === from(txn, null, account) ? 'from' : 'to';
                         return (
-                            <tr className={TxnClasses[txn.type]} key={+txn.hash + 1}>
-                                <td className="type">{type(txn)}</td>
+                            <tr key={txn.hash} className={TxnClasses[txn.type]+' type'}>
+                                <td className={type(txn) +' type'}>{type(txn)} {purpose(txn.data.purpose)}</td>
                                 <td className="hash overflow"><Link to={`/txs/${txn.hash}`}>{hash(txn, truncate)}</Link></td>
-                                {/* {includeDetails &&
+                                {includeDetails &&
                                     <React.Fragment>
-                                        <td className="block">{txn.block_height}</td>
-                                        <td className="age" title={date(txn)}>{age(txn)}</td>
+                                        {/* <td className="block">{txn.block_height}</td>
+                                        <td className="age" title={date(txn)}>{age(txn)}</td> */}
                                         <td className={cx({ 'dim': source === 'to' }, "from overflow")}><Link to={`/account/${from(txn)}`}>{from(txn, 20)}</Link></td>
-                                        <td className={cx(source, "icon")}></td>
-                                        <td className={cx({ 'dim': source === 'from' }, "to overflow")}>
+                                        {/* <td className={cx(source, "icon")}></td> */}
+                                        {/* <td className={cx({ 'dim': source === 'from' }, "to overflow")}>
                                             <Link to={`/account/${to(txn, null, address)}`}>{to(txn, 20, address)}</Link>
-                                        </td>
-                                        <td className="value"><Value coins={coins(txn, account)} price={price} /></td>
-                                    </React.Fragment>} */}
+                                        </td> */}
+                                        {/* <td className="value"><Value coins={coins(txn, account)}  /></td> */}
+                                    </React.Fragment>}
                             </tr>);
                     })}
                 </tbody>
-            </table>);
+            </table>
+            </div>
+            );
     }
 }
 
 const Value = ({ coins, price }) => {
+    let newObj = Object.fromEntries(
+        Object.entries(coins).map(([k, v]) => [k.toLowerCase(), v])
+    );
     const isMobile = window.screen.width <= 560;
     return (
         <React.Fragment>
             <div className="currency pando">
                 {/* {formatCoin(coins.PandoWei)} */}
                 {!isMobile && "Pando"}
-                {!isMobile && <div className='price'>{`[\$${priceCoin(coins.PandoWei, price['PTX'])} USD]`}</div>}
+                {!isMobile && <div className='price'>{`[\$${priceCoin(newObj.ptxwei, price['PTX'])} USD]`}</div>}
             </div>
             {/* <div className="currency PTX">
         {formatCoin(coins.PTXWei)}

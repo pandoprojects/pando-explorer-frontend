@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
-import { browserHistory } from 'react-router';
 import cx from 'classnames';
 import { formatCoin, sumCoin } from '../../common/helpers/utils';
-import { stakeService } from '../../common/services/stake';
-import Pagination from "../../common/components/pagination";
 import { withTranslation } from "react-i18next";
 
 
@@ -46,7 +43,7 @@ class StakesTable extends Component {
   render() {
     const { className, type, truncate, totalStaked, stakes, t } = this.props;
     const { stakeList, isSliced, remetron } = this.state;
-    // console.log(stakes)
+  
     let colSpan = type === 'node' ? 4 : 4;
 
     if (type === 'validators') {
@@ -54,7 +51,7 @@ class StakesTable extends Component {
 
         <div className="stakes trnaj">
           <div className="title mt-5"><p className="ac-det">{t(`TOP_ZYTATRON_NODES`)}</p></div>
-          <div className="txt-de2 mt-4">
+          <div className="txt-de2 mt-4 table-responsive">
           <table className={cx("data txn-table2", className)}>
             <thead style={{color:"aqua"}}>
               <tr onClick={this.toggleList.bind(this)}>
@@ -105,7 +102,7 @@ class StakesTable extends Component {
 
         <div className="stakes trnaj">
           <div className="title mt-5"><p className="ac-det">{t(`TOP_METATRON_NODES`)}</p></div>
-          <div className="txt-de2 mt-4">
+          <div className="txt-de2 mt-4 table-responsive">
           <table className={cx("data txn-table2", className)}>
             <thead>
               <tr onClick={this.toggleList.bind(this)}>
@@ -173,7 +170,7 @@ class StakesTable extends Component {
 
         <div className="stakes trnaj">
         <div className="title mt-5"><p className="ac-det">{t(`TOP_RAMETRON_NODES`)}</p></div>
-        <div className="txt-de2 mt-4">
+        <div className="txt-de2 mt-4 table-responsive">
         <table  className={cx("data txn-table2", className)}>
           <thead>
             <tr onClick={this.toggleList.bind(this)}>
@@ -245,9 +242,9 @@ class StakesTable extends Component {
       return (
 
         <div className="stakes trnaj">
-           <h3 className="blk-det"> <img src="../images/Icon awesome-boxes.svg" alt="" srcset="" /> {t(`BLOCK_DETAILS`)}</h3>
+           {/* <h3 className="blk-det"> <img src="../images/Icon awesome-boxes.svg" alt="" srcset="" /> {t(`BLOCK_DETAILS`)}</h3> */}
           <div className="title mt-5 u7u"> {type === 'node' ? `${t <h2>(`TOP_ZYTATRON_METATRON_NODES`)}` :`${t(`TOP_STAKING_WALLETS`)}`}</div>
-          <div className="txt-de2 jh23 mt-5">
+          <div className="txt-de2 jh23 mt-5 table-responsive">
           <table className={cx("data txn-table2 huydhd", className)}>
             <thead>
               <tr onClick={this.toggleList.bind(this)}>
@@ -278,14 +275,15 @@ class StakesTable extends Component {
               }
               <tr><td className="empty"></td></tr>
               
-            </tbody>
+          
 
-            <tr >
+            <tr>
                 <td style={{textTransform:'uppercase'}}>{t(`TOTAL_STAKED_TOKENS`)}</td>
                 {type === 'node' && <td></td>}
                 <td className="staked"><div className="currency PandoWei">{formatCoin(totalStaked)}</div></td>
                 <td style={{padding:'13px'}} className="staked-prct">100%</td>
               </tr>
+              </tbody>
           </table>
           </div>
         </div>);

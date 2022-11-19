@@ -57,7 +57,7 @@ export const stakeService = {
     return apiService.post(`stake/node-status`, body).then((data) => data.data)
   },
   lbank() {
-    return apiService.get(``).then((data) => data.data)//price api url add here from lbank
+    return apiService.get(`lbank/price`).then((data) => data.data)
   },
   marketCap() {
     return apiService.get(`marketCap/price`).then((data) => data.data)

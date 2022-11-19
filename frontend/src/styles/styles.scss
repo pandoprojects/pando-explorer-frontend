@@ -97,7 +97,9 @@
   cursor: pointer;
   height: 100px;
 }
-
+.tran56{
+  text-transform: capitalize;
+}
 .home-intro:hover {
   box-shadow: 0 0 50px #fff;
   // transform: translateY(-5px);
@@ -380,6 +382,7 @@
         padding: 10px;
         width: 100% !important;
     }
+    
 
 
 }
@@ -423,24 +426,13 @@
   margin-bottom: 23px;
 }
 
-.nodeStatusbackground {
-  background: #00000082 0% 0% no-repeat padding-box;
-  box-shadow: inset -6px -6px 31px rgb(205 205 205 / 84%);
-  border-radius: 29px;
-  opacity: 1;
-  -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px);
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  height: 523px;
-}
 .nodeStatusDisclaimer {
   width: 86%;
   margin-top: 5px;
   padding-top: 27px;
   font-weight: lighter;
-  color: gray;
+  color: #fff;
+  font-family: 'helveticaneuethin';
 }
 .custom-ip-btn {
   color: white;
@@ -475,7 +467,6 @@
 
 .download-page {
   padding: 80px 0;
-  background-color: #000;
 }
 .download-page .searchbar-flex {
   display: flex;
@@ -518,7 +509,7 @@
 }
 .download-page .h-100 {
   // height: 100%;
-  padding: 15px 58px;
+  padding: 15px 30px;
 }
 .download-page .download-box {
   box-shadow: inset -3px -3px 31px rgb(233 1 249 / 49%);
@@ -527,7 +518,7 @@
   border-radius: 22px;
   backdrop-filter: blur(17px);
   -webkit-backdrop-filter: blur(17px);
-  padding: 30px 56px 5px 47px;
+  padding: 30px;
   margin-bottom: 20px;
   height: 100%;
   // width: 400px;
@@ -633,10 +624,17 @@
   border-radius: 22px;
   backdrop-filter: blur(17px);
   -webkit-backdrop-filter: blur(17px);
-  padding: 30px 65px 5px 40px;
+  padding: 30px;
   margin-bottom: 20px;
   height: 100%;
-  width: 98rem;
+}
+.downloadContainer
+{
+  padding: 0px 100px;
+}
+.download-page-network
+{
+  padding: 0 25px
 }
 
 .modalButton {
@@ -672,6 +670,7 @@
 
 .download-page-network .box h4 {
   color: #fff;
+  padding-top: 25px;
   font-size: 28px;
 }
 .download-page-network .box p {
@@ -709,25 +708,6 @@
   box-shadow: inset -6px -6px 31px #cdcdcd1f;
   border-radius: 10px;
 }
-.download-page-network .btn-flex {
-  display: flex;
-  justify-content: space-evenly;
-}
-.download-page-network .btn-flex button {
-  background: transparent linear-gradient(252deg, #757c7e96 0%, #00000024 100%)
-    0% 0% no-repeat padding-box;
-  box-shadow: inset 16px 9px 12px #ffffff2b, 0px 3px 6px #00000029;
-  border: 1px solid #696969;
-  border-radius: 18px;
-  opacity: 1;
-  backdrop-filter: blur(17px);
-  -webkit-backdrop-filter: blur(17px);
-  padding: 18px 50px;
-  color: #fff;
-  padding: 8px;
-  font-size: 20px;
-  width: 318px;
-}
 
 .btn-flex.allbutton {
   padding-right: 22px;
@@ -735,10 +715,7 @@
 .download-page-network .img img {
   width: 100%;
 }
-.container {
-  max-width: 1601px;
-  bottom: 142px;
-}
+
 @media (max-width: 1024px) {
   .logo {
     margin-left: 30px;
@@ -815,57 +792,41 @@
   .download-page-network .btn-flex button {
     margin-right: 14px;
   }
-  .download-page-network .box {
-    width: 61rem;
+  .download-page-network .btn-flex button{
+    width: 200px !important;
   }
 }
 
-
-@media screen and (max-width: 992px) {
-  .container {
-    left: 55px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .row {
-    // width: 65rem;
-  }
-  .box {
-    width: 56rem;
-  }
-  .download-page-network .img img {
-    width: 383px;
-    padding: 25px
-  }
+@media screen and (max-width: 767px) {
   .download-page-network .btn-flex {
-    display: flex;
+    display: block !important;
     justify-content: space-evenly;
   }
-  .btn-flex a .allbutton{
-    width: 89%;
-  }
-  .pando-head{
-    // width: fit-content;
-  }
-//   .download-page .download-box{
-
-//   }
-   .downloadContainer .download-page{
-    
-  }
-// .downloadContainer{
-
-// }
-
-.download-page .h-100{
-    padding: 35px 63px;
-    right: 8%;
+  .download-page-network .btn-flex button {
+    margin-bottom: 10px;
+}
+.account-info th, .account-info td,table.details tbody tr th
+{
+  font-size: 14px!important;
+}
+.download-page-network .btn-flex button{
+  width: 100%!important;
+}
 }
 
-.download-page-network .box{
-    width: 28rem;
-}
+
+@media screen and (max-width: 576px) {
+  
+  
+  .download-page-network .img img {
+   display: none;
+  }
+ 
+  
+
+
+
+
 }
 .download-page-network  .box p{
     font-size: 20px;
@@ -903,7 +864,7 @@
 }
 .download-page-network  .btn-flex{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     // align-items: center;
 }
 .download-page-network  .btn-flex button{
@@ -916,21 +877,25 @@
     -webkit-backdrop-filter: blur(17px);
     padding: 18px 50px;
     color: #fff;
-    padding: 13px;
     font-size: 20px;
-    width: 318px;
+    margin-right: 10px;
 }
 .download-page-network .img img{
     width: 100%;
 }
-.container{
-    max-width: 1601px;
+@media (max-width : 1150px){
+  .content.account .actions {
+    display: block;
+}
 }
 @media (max-width: 1024px){
     .logo{
-      margin-left: 15px;
-      margin-right: 30px;
-      width: 50%;
+      margin-left: 5px;
+      margin-right: 10px;
+      // width: 50%;
+    }
+    .dd-button{
+      width: auto;
     }
     .do-bth {
         width: auto;
@@ -946,14 +911,14 @@
         // padding: 5px;
     }
     .data.block-table, .data.txn-table2, .details.txn-details, .details.txn-info , .txn-info.details, .data.transactions, .details.account-info, .data.txn-table2 {
-        display: block;
+        display: table;
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         white-space: nowrap;
       }
       .overview.tab-bg .data.block-table, .overview.tab-bg .data.txn-table2{
-        display: inherit;
+        display: table;
       }
       .table.details thead tr th:first-child{
         width: auto;
@@ -972,7 +937,12 @@
         text-align: center;
         margin-bottom: 20px;
         /* font-size: 20px; */
+        display: block;
     }
+    .customtansaciton {
+      display: inline-block;
+      width: 100%;
+  }
     .content.account .actions .btn.tx {
         font-size: 16px;
     }
@@ -982,6 +952,10 @@
     }
     .ip09 .ip-input{
         width: 100%;
+        height: 50px;
+    }
+    .nodeStatusDisclaimer{
+      width: 100%;
     }
   }
   @media (max-width : 991px){
@@ -991,6 +965,15 @@
     .dd-button.search-select select{
         margin-left: 0px;
     }
+    .downloadContainer
+    {
+      padding: 0px;
+    }
+    .download-page-network .btn-flex button
+    {
+      width: 100%
+    }
+
   }
   @media (max-width : 767px) {
     .overview.tab-bg{
@@ -1015,6 +998,8 @@
     }
     .searchContainer select{
         padding: 13px 20px 13px 10px;
+        font-size: 14px;
+        width: 126px;
     }
     .chart-container{
         height: auto;
@@ -1029,4 +1014,149 @@
     .pando-head .nav-item > a{
       padding: 5px;
     }
+    .select__container {
+      display: block;
+      margin: 15px 0;
   }
+  .juh6 p{
+    font-size: 14px;
+    padding: 15px;
+  }
+  .content.account .actions {
+    text-align: center;
+    width: 100%;
+
+}
+.customtansaciton{
+  text-align: center;
+  display: flex;
+    overflow: auto;
+}
+.content.account .customtansaciton button{
+  white-space: nowrap;
+}
+.fhg54-tb .react-tabs__tab-list{
+  text-align: center;
+}
+.fhg54-tb .react-tabs__tab-list .react-tabs__tab{
+  margin-bottom: 10px;
+}
+  }
+
+
+
+
+
+  .react-tabs__tab{
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+  
+    box-shadow: inset 0px 0px 27px rgb(0 0 0 / 37%), 0px 3px 6px rgb(0 0 0 / 16%);
+    opacity: 1;
+    color: #fff;
+    border: 0;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+  .react-tabs__tab-list li{
+    list-style: none;
+  }
+  .react-tabs__tab.react-tabs__tab--selected
+  {
+    background: #E643F1 0% 0% no-repeat padding-box;
+  }
+  .pando-tabs .react-tabs__tab.react-tabs__tab--selected
+  {
+    background: rgba(0, 105, 187, 0.84) 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 0px 15px rgb(205 205 205 / 47%);
+  }
+  .react-tabs__tab.react-tabs__tab--selected#react-tabs-2{
+    background: #E643F1 0% 0% no-repeat padding-box;
+    opacity: 1;
+    color: #fff;
+    border: 0;
+  }
+  .react-tabs__tab.react-tabs__tab--disabled
+  {
+    background: rgba(0, 105, 187, 0.35) 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 0px 15px rgb(205 205 205 / 47%);
+    color: #fff;
+  }
+  .react-json-view{
+    background-color: #0b0b0b!important;
+    box-shadow: inset -6px -6px 31px rgb(205 205 205 / 84%);
+  }
+  .pushed-content.object-container {
+    font-size: 16px;
+}
+  .select__selector select{
+    color: white;
+    padding: 8px 25px 6px 8px;
+    font-size: 16px;
+    height: auto;
+    margin-left: 0px;
+    background: #2e2e2e 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 0px 22px #cdcdcd69;
+    border-radius: 33px;
+    width: 100%;
+    line-height: inherit;
+    font-family: 'helvetica_neueregular';
+    cursor: pointer;
+  }
+  table.data tbody tr .Coinbase.type:before {
+    background-image: url("../../public/images/icons/icon_coinbase@2x.png");
+}
+table.data tbody tr .Transfer.type:before {
+  background-image: url("../../public/images/icons/Group865.svg");
+}
+table.data tbody tr .Deposit.type:before {
+  background-image: url("./../../public/images/icons/depositxsx.svg"); 
+}
+table.data tbody tr .Withdraw.type:before {
+  background-image: url("./../../public/images/icons/Withdraw.svg");
+}
+table.data tbody tr .Smart.type:before {
+  background-image: url("./../../public/images/icons/Smart contract.svg");
+}
+
+table.data tbody tr .type:before {
+  content: "";
+  display: inline-block;
+  top: 4px;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 100%;
+}
+.react-tabs__tab{
+  border: 0;
+  text-transform: uppercase;
+  padding: 10px;
+  border-radius: 6px;
+  margin-right: 5px;
+  background: #470C4B 0% 0% no-repeat padding-box;
+  box-shadow: inset 0px 0px 27px rgb(0 0 0 / 37%), 0px 3px 6px rgb(0 0 0 / 16%);
+  color: #E643F1;
+  width: 195px;
+  text-align: center;
+}
+.react-tabs__tab.react-tabs__tab--selected{
+  color: #fff;
+}
+
+.pretty-json-container.object-container
+{
+  text-align: left;
+}

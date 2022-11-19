@@ -9,7 +9,7 @@ class RametronTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            backendAddress: this.props.backendAddress,
+           
             transactions: [],
             account: null
         };
@@ -26,7 +26,7 @@ class RametronTable extends Component {
         return prevState;
     }
     componentDidMount() {
-        const { backendAddress } = this.state;
+     
         const { updateLive } = this.props;
 
 

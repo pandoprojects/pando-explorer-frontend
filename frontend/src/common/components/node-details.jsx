@@ -16,7 +16,7 @@ export default class NodeDetailsComponent extends Component {
         return (
             <div className="content transaction-details">
                 <> <div className="page-title transactions" style={{ width: '96%', letterSpacing: 'normal' }}>{ip} </div>
-                    <button className="btn btn-success custom-btn" onClick={this.Back} style={{ bottom: "57px" }} title={t(`REFRESH`)} ><img height={15} src="/images/rIcon ionic-md-refresh-circle.svg" alt="" /></button>
+                    <button className="btn custom-btn" onClick={this.Back} style={{ bottom: "57px" }} title={t(`REFRESH`)} ><img height={15} src="/images/rIcon ionic-md-refresh-circle.svg" alt="" /></button>
                     {
                         nodeDetails &&
                         <table className="details account-info">

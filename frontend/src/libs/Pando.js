@@ -17,7 +17,7 @@ export default class Pando {
   static unsignedSmartContractTx(txData, sequence) {
     let { from, to, data, value, transactionFee, gasLimit } = txData;
 
-    const ten18 = (new BigNumber(10)).pow(18); // 10^18, 1 Theta = 10^18 ThetaWei, 1 Gamma = 10^ TFuelWei
+    const ten18 = (new BigNumber(10)).pow(18); // 10^18, 1 pando = 10^18 pandoWei, 1 Gamma = 10^ TFuelWei
     const feeInPTXWei = (new BigNumber(transactionFee)).multipliedBy(ten18); // Any fee >= 10^12 TFuelWei should work, higher fee yields higher priority
     const senderSequence = sequence;
     const gasPrice = feeInPTXWei;

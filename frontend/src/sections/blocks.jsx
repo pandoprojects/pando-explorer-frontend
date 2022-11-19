@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import socketClient from 'socket.io-client';
-
 import { blocksService } from '../common/services/block';
 import BlocksTable from "../common/components/blocks-table";
 import Pagination from "../common/components/pagination";
@@ -14,7 +12,6 @@ class Blocks extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: this.props.route.backendAddress,
       blockHeight: 0,
       blockInfoList: [],
       currentPageNumber: 1,
@@ -22,7 +19,7 @@ class Blocks extends Component {
       count: 0,
       loading: true
     };
-    this.onSocketEvent = this.onSocketEvent.bind(this);
+   ;
     this.receivedBlocksEvent = this.receivedBlocksEvent.bind(this);
     this.handleGetBlocksByPage = this.handleGetBlocksByPage.bind(this);
   }
@@ -30,15 +27,6 @@ class Blocks extends Component {
   componentDidMount() {
     const { currentPageNumber } = this.state;
     this.test(currentPageNumber)
-    const { backendAddress } = this.state;
-    // const { updateLive } = this.props;
-
-    //Initial the socket
-    // if (backendAddress) {
-    //   this.socket = socketClient(backendAddress);
-    //   this.socket.on('PUSH_TOP_BLOCKS', this.onSocketEvent)
-    // }
-
   }
   test(currentPageNumber) {
     this.setState({ loading: true });
@@ -54,32 +42,30 @@ class Blocks extends Component {
       })
 
   }
-  onSocketEvent(data) {
-    let transactionsUpdated = [];
-    if (data) {
-      transactionsUpdated.push(data);
-      var a = this.state.blockInfoList, b = transactionsUpdated
-      var c = a.concat(b)
-      var d = c.filter((value, index, self) =>
-        index === self.findIndex((t) => (
-          t.height === value.height
-        ))
-      )
+  // onSocketEvent(data) {
+  //   let transactionsUpdated = [];
+  //   if (data) {
+  //     transactionsUpdated.push(data);
+  //     var a = this.state.blockInfoList, b = transactionsUpdated
+  //     var c = a.concat(b)
+  //     var d = c.filter((value, index, self) =>
+  //       index === self.findIndex((t) => (
+  //         t.height === value.height
+  //       ))
+  //     )
 
-      d = d.sort(function (a, b) {
-        return b.height - a.height;
-      });
-      //d = _.orderBy(d, '', 'desc')
-      d.length = 20
-      this.setState({ blockInfoList: d })
-      transactionsUpdated = [];
+  //     d = d.sort(function (a, b) {
+  //       return b.height - a.height;
+  //     });
+  //     d.length = 20
+  //     this.setState({ blockInfoList: d })
+  //     transactionsUpdated = [];
 
-      //  this.setState({ blocks:  })
-    }
-  }
+  //   }
+  // }
   componentWillUnmount() {
-    if (this.socket)
-      this.socket.disconnect();
+    // if (this.socket)
+    //   this.socket.disconnect();
   }
   test1(currentPageNumber) {
     this.setState({ loading: true });
@@ -101,7 +87,6 @@ class Blocks extends Component {
     if (data.data.type == 'block_list') {
       this.setState({
         blockInfoList: data.data.body,
-        // currentPageNumber: data.data.currentPageNumber,
         totalPageNumber: data.data.totalPageNumber
       })
 
@@ -118,7 +103,7 @@ class Blocks extends Component {
     totalPageNumber = Number(totalPageNumber);
     return (
       <div className="content blocks">
-        <div className="page-title blocks"><img src="../images/icons/Icon awesome-boxes.svg" /> {t('BLOCKS')}  <button className="btn btn-success custom-btn" onClick={() => this.test(this.state.currentPageNumber)} title="Refresh" ><img src="/images/Layer 2.svg" alt="" /></button></div>
+        <div className="page-title blocks"><img src="../images/icons/Icon awesome-boxes.svg" /> {t('BLOCKS')}  <button className="btn custom-btn" onClick={() => this.test(this.state.currentPageNumber)} title="Refresh" ><img src="/images/Layer 2.svg" alt="" /></button></div>
        
         <div className="blk9">
         {this.state.loading ?
@@ -127,7 +112,7 @@ class Blocks extends Component {
             <BlocksTable
               blocks={blockInfoList}
               truncate={20}
-              backendAddress={this.state.backendAddress} updateLive={true} t={t}
+              t={t}
             />
             <Pagination
               size={'lg'}

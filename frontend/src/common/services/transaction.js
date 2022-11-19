@@ -22,7 +22,6 @@ export const transactionsService = {
   },
   getTransactionsByAddress(address, pageNumber = 1,types) 
   {
-  
     let isEqualType = true;
     let type = -1; //Return all types
     let includeService = true;
@@ -37,5 +36,5 @@ export const transactionsService = {
     return apiService.get(`transactions/history`);
   },
 
- 
+  
 };

@@ -97,10 +97,19 @@ color: #E643F1;
 .test-nt {
   text-align: center;
   font-size: 16px;
+  transition: 0.5s all ease-in-out
 }
+.test-nt a.t4r{
+  position: relative;
+  transition: all 500ms ease;
+}
+
 .test-nt a span {
   color: #E643F1;
 }
+// a.t4r:hover{
+//   color: #fff;
+// }
 .do-bth .nav-search{
   width: 50%;
   display: inline-block;

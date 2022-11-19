@@ -10,7 +10,7 @@ export default class BlockOverviewTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: this.props.backendAddress,
+    
       blockHeight: 0,
       blocks: []
     };
@@ -33,7 +33,6 @@ export default class BlockOverviewTable extends Component {
   }
 
 
-
   handleRowClick = (height) => {
     browserHistory.push(`/blocks/${height}`);
   }
@@ -41,10 +40,7 @@ export default class BlockOverviewTable extends Component {
   render() {
     const { className, includeDetails, truncate, t } = this.props;
     const { blocks } = this.state;
-
-    // setTimeout(() => {
-
-
+  
     return (
       <table className={cx("data block-table", className)}>
         <thead>
@@ -63,6 +59,7 @@ export default class BlockOverviewTable extends Component {
           {blocks
             .sort((a, b) => b.height - a.height)
             .map(b => {
+              
               return (
                 <tr key={b.height}>
                   <td className="height">{b.height}</td>

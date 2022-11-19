@@ -14,7 +14,7 @@ class StakeTxsTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: this.props.backendAddress,
+    
       type: this.props.type,
       transactions: this.props.txs.slice(0, TRUNC),
       isSliced: true
@@ -47,7 +47,7 @@ class StakeTxsTable extends Component {
           <div className="title">
             <p><img src="../images/PTX LOGO.svg" className="sifr-img" /> {type === 'source' ? `${t('TOKENS_STAKED_BY_THIS_ADDRESS')}` : `${t('TOKENS_STAKED_TO_THIS_NODE')}`}</p>
             </div>
-          <div className="txt-de2">
+          <div className="txt-de2 table-responsive">
           <table className={cx("data txn-table2", className)}>
             <thead>
               <tr>

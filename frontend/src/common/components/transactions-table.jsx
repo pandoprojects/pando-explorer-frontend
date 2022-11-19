@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { browserHistory, Link } from 'react-router';
-import socketClient from 'socket.io-client';
 import _ from 'lodash';
 import cx from 'classnames';
 
 import { truncateMiddle } from '../../common/helpers/utils';
 import { formatCoin, priceCoin } from '../../common/helpers/utils';
-import { from, to, fee, value, hash, age, date, type, coins } from '../../common/helpers/transactions';
+import { from, to, fee, value, hash, age, date, type, coins,purpose } from '../../common/helpers/transactions';
 import { TxnTypeText, TxnClasses } from '../../common/constants';
 import { withTranslation } from "react-i18next";
 
@@ -16,7 +15,7 @@ class TransactionTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backendAddress: this.props.backendAddress,
+    
       transactions: [],
       account: null
     };
@@ -32,28 +31,11 @@ class TransactionTable extends Component {
     return prevState;
   }
   componentDidMount() {
-    const { backendAddress } = this.state;
-    const { updateLive } = this.props;
-    // const { transactions } = this.state;
-    // Initial the socket
-    // if (updateLive && backendAddress) {
-    //   this.socket = socketClient(backendAddress);
-    //   this.socket.on('PUSH_TOP_TXS', this.onSocketEvent)
-    // }
+    
   }
   componentWillUnmount() {
     
   }
-  // onSocketEvent(data) {
-  //   if (data.type == 'transaction_list') {
-
-  //     let transactionsUpdated = (data.body || []).sort((a, b) => b.number - a.number);
-  //    
-
-
-  //     
-  //   }
-  // }
 
   handleRowClick = (hash) => {
     browserHistory.push(`/txs/${hash}`);
@@ -68,7 +50,7 @@ class TransactionTable extends Component {
 
     const address = account ? account.address : null;
     return (
-      <div className="txt-de2 mnet6">
+      <div className="txt-de2 mnet6 table-responsive">
       <table className={cx("data txn-table2", className)}>
         <thead style={{paddingBottom:'15px'}}>
           <tr>
@@ -87,14 +69,14 @@ class TransactionTable extends Component {
         </thead>
         <tbody>
           {_.map(uniqueArray, (txn, index) => {
-
+            
             let source = null;
          
             source = !account ? 'none' : account.address === from(txn, null, account) ? 'from' : 'to';
             return (
               // <tr key={txn.hash} className={TxnClasses[txn.type]} key={index}>
               <tr key={txn.hash} className={TxnClasses[txn.type]}>
-                <td className="type" ><img src="../images/icons/icon_coinbase@2x.png" className="coin-b2" />{type(txn)}</td>
+                <td className={type(txn) +' type'} >{type(txn)} {purpose(txn.data.purpose)}</td>
                 <td className="hash overflow"><Link to={`/txs/${txn.hash}`}>{hash(txn, truncate)}</Link></td>
                 {includeDetails &&
                   <React.Fragment>
@@ -105,16 +87,19 @@ class TransactionTable extends Component {
                     <td className={cx({ 'dim': source === 'from' }, "to overflow")}>
                       <Link to={`/account/${to(txn, null, address)}`}>{to(txn, 20, address)}</Link>
                     </td>
-
                     <td className="value"><Value coins={coins(txn, account)} /></td>
-
-
-
                   </React.Fragment>}
-              </tr>);
+              </tr>
+            
+              );
+              
           })}
+         
         </tbody>
       </table>
+      {uniqueArray.length < 1 &&
+          <div className="Norecordfound">No Record found!</div>
+           }
       </div>
       );
       
@@ -122,6 +107,9 @@ class TransactionTable extends Component {
 }
 
 const Value = ({ coins, price }) => {
+  let newObj = Object.fromEntries(
+    Object.entries(coins).map(([k, v]) => [k.toLowerCase(), v])
+);
   const isMobile = window.screen.width <= 560;
   const calulateFee = (val) => {
     if (val.includes('.')) {
@@ -133,15 +121,9 @@ const Value = ({ coins, price }) => {
   }
   return (
     <React.Fragment>
-
-      {/* <div className="currency pando">
-        {calulateFee((String(coins.PTXWei / 1000000000000000000)))}
-        {!isMobile && " Pando"}
-
-      </div> */}
       <div className="currency PTX">
 
-        {isNaN(parseFloat(formatCoin(coins?.ptxwei))) ? 0 : formatCoin(coins?.ptxwei)}
+        {isNaN(parseFloat(formatCoin(newObj?.ptxwei))) ? 0 : formatCoin(newObj?.ptxwei)}
         {!isMobile && "PTX"}
 
       </div>

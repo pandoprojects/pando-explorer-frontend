@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
-import stakeService from "react";
 import * as moment from "moment";
 import LoadingPanel from "../common/components/loading-panel";
 import { withTranslation } from "react-i18next";
-
-export default class downloads extends Component {
-  linuxArmUrl = `https://build.pandoproject.org/Rametron_4.1.1_amd64-arm.deb`;
-  macArmUrl = `https://build.pandoproject.org/Rametron-4.1.1-arm64.dmg`;
-  window32Url = `https://build.pandoproject.org/Rametron Setup 4.1.1-32.exe`;
+import config from "../config";
+class downloads extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,36 +34,23 @@ export default class downloads extends Component {
     return (
       <div className="downloadContainer">
         <section className="download-page">
-          <div className="container">
+          <div className="container-fluid">
             <div class="row">
-              <div className="col-md-12">
-                <div className="searchbar-flex">
-                  {/* <input type="" name="" placeholder="Search..." />
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                  >
-                    <option selected>Address</option>
-                    <option value="1">Blocks</option>
-                    <option value="2">Transactions</option>
-                    <option value="3">Block Height</option>
-                  </select> */}
-                </div>
-              </div>
+             
               <div className="col-md-4">
                 <div className="h-100">
                   <div className="download-box">
                     <div className="title">
-                      Rametron
+                      {t(`RAMETRON`)}
                       <img src="./images/Group 4216.svg" />
                     </div>
-                    <div className="des">Download Rametron Lite</div>
+                    <div className="des">{t(`DOWNLOAD RAMETRON LITE`)}</div>
                     <button
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={this.openModal}
                     >
-                      Download Now
+                      {t(`DOWNLOAD NOW`)} 
                     </button>
                   </div>
                 </div>
@@ -76,16 +59,16 @@ export default class downloads extends Component {
                 <div className="h-100">
                   <div className="download-box">
                     <div className="title">
-                      Rametron
+                    {t(`RAMETRON`)}
                       <img src="./images/Group 4227.svg" />
                     </div>
-                    <div className="des">Download Rametron Pro</div>
+                    <div className="des">{t(`DOWNLOAD RAMETRON PRO`)}</div>
                     <button
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={this.openModal}
                     >
-                      Download Now
+                      {t(`DOWNLOAD NOW`)}
                     </button>
                   </div>
                 </div>
@@ -94,16 +77,16 @@ export default class downloads extends Component {
                 <div className="h-100">
                   <div className="download-box">
                     <div className="title">
-                      Rametron
+                    {t(`RAMETRON`)}
                       <img src="./images/Group 4228.svg" />
                     </div>
-                    <div className="des">Download Rametron Enterprise</div>
+                    <div className="des">{t(`DOWNLOAD RAMETRON ENTERPRISE`)}</div>
                     <button
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={this.openModal}
                     >
-                      Download Now
+                      {t(`DOWNLOAD NOW`)}
                     </button>
                   </div>
                 </div>
@@ -112,16 +95,16 @@ export default class downloads extends Component {
                 <div className="h-100">
                   <div className="download-box">
                     <div className="title">
-                      Rametron
+                    {t(`RAMETRON`)}
                       <img src="./images/Group 4229.svg" />
                     </div>
-                    <div className="des">Download Rametron Mobile</div>
+                    <div className="des"> {t(`DOWNLOAD RAMETRON MOBILE`)}</div>
                     <button
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={this.openModal}
                     >
-                      Download Now
+                      {t(`DOWNLOAD NOW`)}
                     </button>
                   </div>
                 </div>
@@ -130,16 +113,16 @@ export default class downloads extends Component {
                 <div className="h-100">
                   <div className="download-box">
                     <div className="title">
-                      Zytatron
+                       {t(`ZYTATRON`)}
                       <img src="./images/Zytatron.svg" />
                     </div>
-                    <div className="des">Download Zytatron</div>
+                    <div className="des">  {t(`DOWNLOAD ZYTATRON`)}</div>
                     <button
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={this.openModal}
                     >
-                      Download Now
+                     {t(`DOWNLOAD NOW`)}
                     </button>
                   </div>
                 </div>
@@ -148,25 +131,25 @@ export default class downloads extends Component {
                 <div className="h-100">
                   <div className="download-box">
                     <div className="title">
-                      Metatron
+                      {t(`METATRON`)}
                       <img src="./images/Metatron.svg" />
                     </div>
-                    <div className="des">Download Rametron</div>
+                    <div className="des">{t(`DOWNLOAD RAMETRON`)}</div>
                     <button
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={this.openModal}
                     >
-                      Download Now
+                      {t(`DOWNLOAD NOW`)}
                     </button>
                   </div>
                 </div>
               </div>
 
               <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                <Modal.Header>
-                  <Modal.Title className="modal-header">Download</Modal.Title>
-                </Modal.Header>
+                {/* <Modal.Header>
+                  <Modal.Title className="modal-header">{t(`DOWNLOAD`)}</Modal.Title>
+                </Modal.Header> */}
                 <Modal.Body>
                   Coming Soon...!
                 </Modal.Body>
@@ -181,16 +164,16 @@ export default class downloads extends Component {
         </section>
 
         <section className="download-page-network">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-md-12">
                 <div className="box">
                   <div className="row">
                     <div class="col-md-7">
                       <div className="min-box">
-                        <h4>Pando Network Rametron Node</h4>
+                        <h4>{t(`PANDO_NETWORK_RAMETRON_NODE`)}</h4>
                         <p>
-                          Earn PTX by activating Rametron in the Pando Network
+                        {t(`EARN_PTX_BY_ACTIVATING_RAMETRON_IN_THE_PANDO_NETWORK`)} 
                         </p>
                         <div className="icon-flex">
                           <button>
@@ -207,19 +190,19 @@ export default class downloads extends Component {
                           </button>
                         </div>
                         <div className="btn-flex">
-                          <a href="./images/Pando Blockchain Setup.pdf">
-                            <button className="allbutton">All-in-one Guide</button>
+                          <a href={config.allinoneguide} target="_blank">
+                            <button className="allbutton">{t(`ALL IN ONE GUIDE`)}</button>
                           </a>
 
-                          <a href="https://www.youtube.com/playlist?list=PL9b5rPhmAkZDLtTrP522uTIGSrpKmJo7_">
-                            <button className="allbutton">Video Guide</button>
+                          <a href="https://www.youtube.com/playlist?list=PL9b5rPhmAkZDLtTrP522uTIGSrpKmJo7_"  target="_blank">
+                            <button className="allbutton">{t(`VIDEO GUIDE`)}</button>
                           </a>
                         </div>
                       </div>
                     </div>
                     <div className="col-md-4">
                       <div className="img">
-                        <img src="./images/IMG 1@2x.png" alt="" srcset="" />
+                        <img src="./images/IMG 1@2x.png" alt="" />
                       </div>
                     </div>
                   </div>
@@ -232,3 +215,6 @@ export default class downloads extends Component {
     );
   }
 }
+
+
+export default withTranslation()(downloads);
